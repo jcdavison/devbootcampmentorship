@@ -11,8 +11,8 @@ gem 'unicorn'
 
 
 group :development do
-  gem 'pry-doc'
   gem 'pry-rails'
+  gem 'pry-doc'
 end
 
 group :test do
