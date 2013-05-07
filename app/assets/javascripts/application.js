@@ -12,4 +12,11 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require_tree .
+//= require ./third-party/angular/angular
+//= require ./third-party/angular/angular-resource
+//= require ./third-party/angular/angular-sanitize
+//= require ./config
+//= require_tree ./services
+//= require_tree ./directives
+//= require_tree ./models
+//= require_tree ./controllers

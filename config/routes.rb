@@ -1,11 +1,7 @@
 BootBook::Application.routes.draw do
 
-  namespace :api do
-    namespace :v1, :constraints => {format: 'json'} do
-      match "home" => "home#index"
-    end
-  end
+  resource :home, :only => [:index]
 
-  root :to => "api/v1/home#index"
+  root :to => "home#index"
 
 end

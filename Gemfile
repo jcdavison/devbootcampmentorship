@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
 
-gem 'api-versions', '~> 0.2.0'
 gem 'cancan'
 gem 'haml-rails'
 gem 'jbuilder'
