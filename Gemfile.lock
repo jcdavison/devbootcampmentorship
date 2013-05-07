@@ -170,6 +170,8 @@ GEM
       rack
       raindrops (~> 0.7)
     yard (0.8.2.1)
+    zurb-foundation (4.0.9)
+      sass (>= 3.2.0)
 
 PLATFORMS
   ruby
@@ -192,3 +194,4 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
   unicorn
+  zurb-foundation (~> 4.0.0)

@@ -12,6 +12,7 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require foundation
 //= require ./third-party/angular/angular
 //= require ./third-party/angular/angular-resource
 //= require ./third-party/angular/angular-sanitize
@@ -20,3 +21,5 @@
 //= require_tree ./directives
 //= require_tree ./models
 //= require_tree ./controllers
+
+$(document).foundation();

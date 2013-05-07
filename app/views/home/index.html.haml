@@ -1,5 +1,9 @@
-.click-me{"ng-controller" => "applicationController"}
-  Click Me
-  %input.checkbox{"type" => "checkbox", "ng-click" => "toggleCheckbox()"}
-  %h1.john-text{"ng-show" => "hiJohn()"}
-    Hi John!
+.row
+  .click-me{"ng-controller" => "applicationController"}
+    %br
+    %label.large-6.column{:for => "checkbox1", :style => "font-size: 25px;"}
+      %input#checkbox1{:style => "display: none;", :type => "checkbox", "ng-click" => "toggleCheckbox()"}
+      %span.custom.checkbox
+      CLICK ME!
+    .john-text.small-6.columns{"ng-show" => "hiJohn()", :style => "font-size: 25px; font-weight: bold;"}
+      HI JOHN!
