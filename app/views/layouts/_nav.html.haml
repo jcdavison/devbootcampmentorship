@@ -1,0 +1,22 @@
+%nav.top-bar
+  %ul.title-area
+    %li.name
+      %h1 
+        = link_to "TheBootBook", "#"
+    %li.toggle-topbar.menu-icon
+      %a{:href => "#"}
+        menu
+  %section.top-bar-section
+    %ul.right
+      %li.has-dropdown
+        %a{ href: "#" }
+          options
+        %ul.dropdown
+          - if ! logged_in?
+            %li
+              %a{ href: "/auth/linkedin"}
+                Login via LinkedIN
+          - if logged_in?
+            %li
+              %a{ href: "/sign_out"}
+                Sign Out
