@@ -12,3 +12,10 @@
  *= require foundation_and_overrides
  *= require_tree .
  */
+@import "foundation";
+@import "variables";
+
+
+.john-text{
+  color: $foundationGray;
+}
