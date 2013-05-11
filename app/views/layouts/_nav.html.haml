@@ -12,16 +12,11 @@
         %li
           %a
             Welcome #{current_user.first_name}
-      %li.divider
-      %li.has-dropdown
-        %a{ href: "#" }
-          options
-        %ul.dropdown
-          - if ! logged_in?
-            %li
-              %a{ href: "/auth/linkedin"}
-                Login via LinkedIN
-          - if logged_in?
-            %li
-              %a{ href: "/sign_out"}
-                Sign Out
+        %li.divider
+        %li
+          %a{ href: "/sign_out"}
+            Sign Out
+      - if ! logged_in?
+        %li
+          %a{ href: "/auth/linkedin"}
+            LogIn

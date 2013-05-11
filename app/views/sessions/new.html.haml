@@ -5,17 +5,23 @@
         Welcome to the Dev Bootcamp Mentorship Board 
 .row
   .large-10.columns.large-centered.panel
+    %h4.subheader.centered
+      Things we'd like you to know:
     %h3.subheader.centered
-      Please choose a role and login in :)
-    %a{href: "#", "data-reveal-id" => "question_1"}
-      What is the mentorship program
+      %a{href: "#", "data-reveal-id" => "gen_info"}
+        What is the mentorship program?
+    %h3.subheader.centered
+      %a{href: "#", "data-reveal-id" => "benefits"}
+        What is the benefit to Mentors?
+    %h3.subheader.centered
+      %a{href: "#", "data-reveal-id" => "commitment"}
+        What is the time commitment?
+    %h3.subheader.centered
+      %a{href: "#", "data-reveal-id" => "responsibilities"}
+        Mentor Responsibilities?
     .row
-      .large-10.large-offset-1.columns
-        %h3.subheader.centered
-          %a{:href=>"/auth/linkedin?role=mentor"}
-            .button
-              Mentors
-          %a{:href=>"/auth/linkedin?role=boot"}
-            .button
-              Boots
+      .large-4.columns.large-centered
+        %a{:href=>"/auth/linkedin?roll=mentor"}
+          .button.expand.success
+            Sign Up as a Mentor
 =render "layouts/onboard_modal"
