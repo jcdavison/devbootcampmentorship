@@ -2,7 +2,8 @@ class SessionsController < ApplicationController
   def create
     if @authorization = Authorization.find_by_uid(auth_hash[:uid])
       session[:current_user_id] = @authorization.user.id 
-      redirect_to root_path
+      redirect_to edit_boot_path current_user.id if current_user.role = "boot" 
+      # redirect_to edit_boot_path if @authorization.user.role = "boot" 
     else
       @user = User.new
       @user.set_attributes(auth_hash, params[:role])
