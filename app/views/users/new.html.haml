@@ -1,0 +1,33 @@
+.row
+  .large-10.columns.large-centered
+    = form_for @user, :url => "/auth/linkedin", :method => :get, :class => "panel" do |u|
+      %fieldset
+        %legend
+          %h3.subheader
+            Please Tell Us About You
+        .row
+          .columns.large-10.large-centered
+            .row
+              .columns.large-4
+                %h5.subheader
+                  I am here because I am...
+              .columns.large-4
+                %input{type: "checkbox", name: "boot"}
+                  Boot (or grad)
+                %br
+                %input{type: "checkbox", name: "mentor"}
+                  Mentor
+              .columns.large-4
+                #cohort_dropdown
+                  = select "cohort", "cohort_id", User.all.collect {|u| [ u.first_name, u.id]}, {:prompt => "Pick a Cohort"}
+        .row
+          .columns.large-8.large-centered
+            .row.collapse
+              .large-2.columns
+                %span.prefix
+                  email
+              .large-10.columns
+                = u.text_field :email, :placeholder => "someone@gmail.com"
+        .row
+          .columns.large-4.large-centered
+            = u.submit "Login With Linkedin", class: "button expand"
