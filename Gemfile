@@ -3,13 +3,13 @@ source 'https://rubygems.org'
 gem 'cancan'
 gem 'haml-rails'
 gem 'jbuilder'
+gem 'jquery-rails'
 gem 'oauth2'
+gem "omniauth", "~> 1.1.1"
+gem 'omniauth-linkedin'
 gem 'pg'
 gem 'rails', '3.2.8'
 gem 'unicorn'
-gem "omniauth", "~> 1.1.1"
-gem 'omniauth-linkedin'
-gem 'jquery-rails'
 
 group :development do
   gem 'pry-rails'
@@ -27,8 +27,8 @@ group :development, :test do
 end
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
   gem 'coffee-rails', '~> 3.2.1'
-  gem "zurb-foundation", "~> 4.1.5"
+  gem 'sass-rails',   '~> 3.2.3'
   gem 'uglifier', '>= 1.0.3'
+  gem "zurb-foundation", "~> 4.1.5"
 end
