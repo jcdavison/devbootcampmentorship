@@ -8,6 +8,11 @@
         menu
   %section.top-bar-section
     %ul.right
+      - if logged_in?
+        %li
+          %a
+            Welcome #{current_user.first_name}
+      %li.divider
       %li.has-dropdown
         %a{ href: "#" }
           options

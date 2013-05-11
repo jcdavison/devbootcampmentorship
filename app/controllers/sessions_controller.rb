@@ -5,13 +5,17 @@ class SessionsController < ApplicationController
       redirect_to edit_boot_path current_user.id if current_user.role = "boot" 
       # redirect_to edit_boot_path if @authorization.user.role = "boot" 
     else
+
       @user = User.new
       @user.set_attributes(auth_hash, params[:role])
       if @user.save
         @user.new_auth(auth_hash, params[:role])
         session[:current_user_id] = @user.id 
+        redirect_to edit_boot_path current_user.id if current_user.role = "boot" 
+      else
         redirect_to root_path
       end
+
     end
   end
 

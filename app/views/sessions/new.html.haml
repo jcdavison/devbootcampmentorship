@@ -1,15 +1,21 @@
 .row
+  .large-10.columns.large-centered
+    %h2.subheader.centered
+      %a
+        Welcome to the Dev Bootcamp Mentorship Board 
+.row
   .large-10.columns.large-centered.panel
     %h3.subheader.centered
-      Welcome to the DevBootCamp Mentorship Board 
-    %h3.subheader.centered
       Please choose a role and login in :)
+    %a{href: "#", "data-reveal-id" => "question_1"}
+      What is the mentorship program
     .row
       .large-10.large-offset-1.columns
         %h3.subheader.centered
           %a{:href=>"/auth/linkedin?role=mentor"}
             .button
               Mentors
-            %a{:href=>"/auth/linkedin?role=boot"}
-              .button
-                Boots
+          %a{:href=>"/auth/linkedin?role=boot"}
+            .button
+              Boots
+=render "layouts/onboard_modal"
