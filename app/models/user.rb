@@ -3,6 +3,11 @@ class User < ActiveRecord::Base
   validates_presence_of :email, :first_name, :last_name
 
   has_many :authorizations, :dependent => :destroy
+  belongs_to :cohort
+  has_many :pairings, :foreign_key => "mentee_id", :dependent => :destroy
+  has_many :reverse_pairings, :foreign_key => "mentor_id", :class_name => "Pairing", :dependent => :destroy
+  has_many :mentors, :through => :pairings, :class_name => "User"
+  has_many :mentees, :through => :reverse_pairings, :class_name => "User"
 
   def set_attributes(auth_hash)
     self.email = auth_hash[:info][:email]
@@ -14,6 +19,10 @@ class User < ActiveRecord::Base
   def new_auth(auth_hash)
     self.authorizations.build( provider: auth_hash[:provider], uid: auth_hash[:uid], token: auth_hash[:credentials][:token], secret: auth_hash[:credentials][:secret])
     self.save
+  end
+
+  def mentor!(other_user)
+    Pairing.create!(:mentor_id => id, :mentee_id => other_user.id)
   end
 
 end
