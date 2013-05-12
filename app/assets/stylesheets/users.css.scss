@@ -1,3 +1,19 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+img {
+  border-radius: 3px;
+}
+
+.middle {
+  vertical-align: middle;
+}
+
+
+.align_text {
+  line-height: 80px;
+  &.subheader {
+    font-size: 24px; 
+  }
+}
+
+.inline {
+  display: inline;
+}

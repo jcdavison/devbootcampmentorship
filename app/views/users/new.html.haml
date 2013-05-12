@@ -10,7 +10,7 @@
             .row
               .columns.large-5
                 %h4.subheader
-                  I am here because I am...
+                  I am (click all that apply) 
               .columns.large-3
                 %input{type: "checkbox", name: "boot", id: "boot"}
                   Boot (or grad)
@@ -19,7 +19,7 @@
                   Mentor
               .columns.large-4
                 #cohort_dropdown.hidden
-                  = select "cohort", "cohort_id", Cohort.all.collect {|u| [ u.name, u.id]}, {:prompt => "Pick a Cohort"}
+                  = collection_select :cohort, :cohort_id , Cohort.all, :id, :name,  {:prompt => "Pick a Cohort"}
         .row
           .columns.large-8.large-centered
             .row.collapse

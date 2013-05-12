@@ -4,9 +4,17 @@ class UsersController < ApplicationController
   end
 
   def create
-    p params
-    p auth_hash
-    redirect_to new_user_path
+    if @authorization = Authorization.find_by_uid(auth_hash[:uid])
+      session[:current_user_id] = @authorization.user.id 
+      redirect_to cohort_path current_user.cohort
+    elsif
+      @user = User.new
+      @user.set_attributes(auth_hash, params)
+      session[:current_user_id] = @user.id if @user.save 
+      redirect_to cohort_path current_user.cohort.id 
+    elsif
+      redirect_to sign_in_path
+    end
   end
 
   protected

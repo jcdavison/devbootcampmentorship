@@ -1,0 +1,36 @@
+.row
+  .large-10.columns.large-centered.panel
+    .row
+      .large-8.columns
+        %h2
+          Welcome to the #{@cohort.name.capitalize}
+      .large-3.columns
+        .button.medium.expand.success
+          Assign Mentees
+      .large-1.columns
+    .row
+      .large-11.columns.large-offset-1
+        .row
+          .large-3.columns
+            %h6.subheader
+              start date: #{@cohort.start_date}
+          .large-4.columns
+            %h6.subheader
+              graduation: #{@cohort.end_date}
+          .large-3.columns
+            %h6.subheader
+              qty boots: #{@cohort.users.count}
+          .large-2.columns
+    %h3.subheader
+      %a
+        Honorable Boots
+    - @cohort.users.each do |boot|
+      .row
+        .large-11.columns.large-offset-1
+          .row
+            .large-2.columns
+              = image_tag boot.pic
+            .large-4.columns.align_text
+              #{boot.first_name} #{boot.last_name}
+            .large-6.columns.align_text
+              other information

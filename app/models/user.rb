@@ -9,11 +9,13 @@ class User < ActiveRecord::Base
   has_many :mentors, :through => :pairings, :class_name => "User"
   has_many :mentees, :through => :reverse_pairings, :class_name => "User"
 
-  def set_attributes(auth_hash)
+  def set_attributes(auth_hash, opts = {})
     self.email = auth_hash[:info][:email]
     self.first_name = auth_hash[:info][:first_name]
     self.last_name = auth_hash[:info][:last_name]
     self.pic = auth_hash[:info][:image]
+    self.cohort_id = opts[:cohort][:cohort_id] unless opts[:cohort].nil?
+    self.contact_email = opts[:user][:email] unless opts[:user].nil?
   end
 
   def new_auth(auth_hash)
