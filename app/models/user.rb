@@ -25,4 +25,11 @@ class User < ActiveRecord::Base
     Pairing.create!(:mentor_id => id, :mentee_id => other_user.id)
   end
 
+  def boot_status
+    if cohort.try(:end_date) > Date.today
+      "Boot"
+    elsif cohort.try(:end_date) < Date.today
+      "Alumni"
+    end
+  end
 end
