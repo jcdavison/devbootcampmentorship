@@ -8,18 +8,18 @@
         .row
           .columns.large-10.large-centered
             .row
-              .columns.large-4
-                %h5.subheader
+              .columns.large-5
+                %h4.subheader
                   I am here because I am...
-              .columns.large-4
-                %input{type: "checkbox", name: "boot"}
+              .columns.large-3
+                %input{type: "checkbox", name: "boot", id: "boot"}
                   Boot (or grad)
                 %br
                 %input{type: "checkbox", name: "mentor"}
                   Mentor
               .columns.large-4
-                #cohort_dropdown
-                  = select "cohort", "cohort_id", User.all.collect {|u| [ u.first_name, u.id]}, {:prompt => "Pick a Cohort"}
+                #cohort_dropdown.hidden
+                  = select "cohort", "cohort_id", Cohort.all.collect {|u| [ u.name, u.id]}, {:prompt => "Pick a Cohort"}
         .row
           .columns.large-8.large-centered
             .row.collapse
