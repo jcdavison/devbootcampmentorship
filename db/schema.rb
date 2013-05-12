@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130511234914) do
+ActiveRecord::Schema.define(:version => 20130512013101) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -33,6 +33,17 @@ ActiveRecord::Schema.define(:version => 20130511234914) do
 
   add_index "cohorts", ["end_date"], :name => "index_cohorts_on_end_date"
   add_index "cohorts", ["start_date"], :name => "index_cohorts_on_start_date"
+
+  create_table "commitments", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "cohort_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  add_index "commitments", ["cohort_id"], :name => "index_commitments_on_cohort_id"
+  add_index "commitments", ["user_id", "cohort_id"], :name => "index_commitments_on_user_id_and_cohort_id"
+  add_index "commitments", ["user_id"], :name => "index_commitments_on_user_id"
 
   create_table "pairings", :force => true do |t|
     t.integer  "mentor_id"
