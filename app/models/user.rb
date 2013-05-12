@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :reverse_pairings, :foreign_key => "mentor_id", :class_name => "Pairing", :dependent => :destroy
   has_many :mentors, :through => :pairings, :class_name => "User"
   has_many :mentees, :through => :reverse_pairings, :class_name => "User"
+  has_many :commitments
+  has_many :cohorts, :through => :commitments
+
 
   def set_attributes(auth_hash)
     self.email = auth_hash[:info][:email]
@@ -23,6 +26,10 @@ class User < ActiveRecord::Base
 
   def mentor!(other_user)
     Pairing.create!(:mentor_id => id, :mentee_id => other_user.id)
+  end
+
+  def commit_to_mentor!(cohort)
+    Commitment.create!(:user_id => id, :cohort_id => cohort.id)
   end
 
   def boot_status
