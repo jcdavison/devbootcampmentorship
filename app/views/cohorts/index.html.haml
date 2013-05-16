@@ -1,0 +1,19 @@
+.row
+  .large-10.columns.large-centered
+    %h3.subheader
+      %a
+        Welcome to Dev BootCamp's Cohorts
+.row
+  .large-10.columns.large-centered.panel
+    - @cohorts.each do |c|
+      .row
+        .large-2.columns.subheader
+          = c.name
+        .large-2.columns.subheader
+          = c.start_date
+        .large-2.columns.subheader
+          = c.end_date
+        .large-3.columns.subheader
+          Mentor Positions: #{c.available_mentorships}
+        .large-3.columns{"ng-show" => current_user.avail_mentor?, "ng-click" => "commitToMentor(current_user)"}
+

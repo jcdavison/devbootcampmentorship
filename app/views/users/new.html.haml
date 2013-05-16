@@ -20,14 +20,14 @@
               .columns.large-4
                 #cohort_dropdown.hidden
                   = collection_select :cohort, :cohort_id , Cohort.all, :id, :name,  {:prompt => "Pick a Cohort"}
-        .row
-          .columns.large-8.large-centered
-            .row.collapse
-              .large-2.columns
-                %span.prefix
-                  email
-              .large-10.columns
-                = u.text_field :email, :placeholder => "someone@gmail.com"
+        -# .row
+        -#   .columns.large-8.large-centered
+        -#     .row.collapse
+        -#       .large-2.columns
+        -#         %span.prefix
+        -#           email
+        -#       .large-10.columns
+        -#         = u.text_field :email, :placeholder => "someone@gmail.com"
         .row
           .columns.large-4.large-centered
-            = u.submit "Login With Linkedin", class: "button expand"
+            = u.submit "Login With Linkedin", class: "button expand margin-top"

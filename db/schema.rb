@@ -64,11 +64,11 @@ ActiveRecord::Schema.define(:version => 20130512013101) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.string   "pic"
-    t.integer  "cohort_id"
     t.string   "contact_phone"
     t.string   "contact_email"
     t.boolean  "active"
     t.boolean  "deleted"
+    t.integer  "cohort_id"
   end
 
   add_index "users", ["role"], :name => "index_users_on_role"

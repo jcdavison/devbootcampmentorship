@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :email, :pic, :role
+  attr_accessible :first_name, :last_name, :email, :pic, :role, :contact_phone
   validates_presence_of :email, :first_name, :last_name
 
   has_many :authorizations, :dependent => :destroy
@@ -40,5 +40,9 @@ class User < ActiveRecord::Base
     elsif cohort.try(:end_date) < Date.today
       "Alumni"
     end
+  end
+
+  def avail_mentor?
+    (cohort && cohort.active?) ? false : true
   end
 end

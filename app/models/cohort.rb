@@ -16,7 +16,13 @@ class Cohort < ActiveRecord::Base
     inform_boots
   end
 
+  def active?
+    self.end_date >= Date.today
+  end
 
+  def available_mentorships
+    boots.count - mentors.count
+  end
 
   private
 

@@ -11,12 +11,18 @@ class UsersController < ApplicationController
       @user = User.new
       @user.set_attributes(auth_hash, params)
       session[:current_user_id] = @user.id if @user.save 
-      redirect_to cohort_path current_user.cohort.id 
+      redirect_to edit_mentor_path @user if @user.avail_mentor? && @user.mentees.empty?
+      # redirect_to cohort_path current_user.cohort.id if @user.mentor? == "busy"
+      # redirect_to cohort_path current_user.cohort.id 
     elsif
       redirect_to sign_in_path
     end
   end
 
+  def update
+    User.find(params[:id]).update_attributes(params[:user])
+    redirect_to cohorts_path 
+  end
   protected
 
   def auth_hash

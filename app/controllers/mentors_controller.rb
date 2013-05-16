@@ -1,8 +1,12 @@
 class MentorsController < ApplicationController
   def edit
-    @mentor = User.find(params[:id])
+    @user = User.find(params[:id])
   end
 
   def update
+  end
+
+  def next_steps
+
   end
 end
