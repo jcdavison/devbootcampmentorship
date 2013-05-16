@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130512013101) do
+ActiveRecord::Schema.define(:version => 20130516032744) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -27,8 +27,9 @@ ActiveRecord::Schema.define(:version => 20130512013101) do
     t.string   "name"
     t.date     "start_date"
     t.date     "end_date"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",                    :null => false
+    t.datetime "updated_at",                    :null => false
+    t.boolean  "display",    :default => false
   end
 
   add_index "cohorts", ["end_date"], :name => "index_cohorts_on_end_date"
