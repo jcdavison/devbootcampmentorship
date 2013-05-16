@@ -12,22 +12,32 @@ class Cohort < ActiveRecord::Base
   def match_all_mentors
     chosen_mentors = find_mentors
     match_mentors(chosen_mentors)
+    inform_mentors(chosen_mentors)
+    inform_boots
   end
+
+
+
+  private
 
   def find_mentors
     if mentors.count > boots.count
       reduce_mentors
     elsif mentors.count < boots.count
-      duplicate_mentors
+      mentors
     else
       mentors
     end
   end
 
   def match_mentors(chosen_mentors)
-    chosen_mentors.zip(boots).each { |mentor, boot| mentor.mentor!(boot) }
-    inform_mentors(chosen_mentors)
-    inform_boots
+    unmentored_boots = boots
+    while unmentored_boots.count >= chosen_mentors.count
+      chosen_mentors.zip(unmentored_boots).each do |mentor, boot|
+        mentor.try(:mentor!, boot)
+        unmentored_boots -= [boot]
+      end
+    end
   end
 
   def inform_boots
@@ -40,10 +50,6 @@ class Cohort < ActiveRecord::Base
 
   def inform_unchosen_mentors(unchosen_mentors)
     puts "This should email unchosen mentors and encourage them to choose another cohort"
-  end
-
-  def duplicate_mentors
-    puts "working"
   end
 
   def reduce_mentors

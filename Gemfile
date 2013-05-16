@@ -12,8 +12,7 @@ gem 'rails', '3.2.8'
 gem 'unicorn'
 
 group :development do
-  gem 'pry-rails'
-  gem 'pry-doc'
+  gem 'jazz_hands'
 end
 
 group :test do
