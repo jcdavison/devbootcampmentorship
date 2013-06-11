@@ -13,10 +13,12 @@
                   I am (click all that apply) 
               .columns.large-3
                 %input{type: "checkbox", name: "boot", id: "boot"}
-                  Boot (or grad)
+                  .subheader.inline
+                    Boot (or grad)
                 %br
                 %input{type: "checkbox", name: "mentor"}
-                  Mentor
+                  .subheader.inline
+                    Mentor
               .columns.large-4
                 #cohort_dropdown.hidden
                   = collection_select :cohort, :cohort_id , Cohort.all, :id, :name,  {:prompt => "Pick a Cohort"}

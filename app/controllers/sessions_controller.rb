@@ -8,11 +8,7 @@ class SessionsController < ApplicationController
     else
       @user = User.new
       @user.set_attributes(auth_hash)
-      if params[:role] == "mentor" 
-        @user.role = params[:role]
-        @user.save
-        redirect_to edit_mentor_path @user
-      elsif @user.save
+      if @user.save
         @user.new_auth(auth_hash)
         session[:current_user_id] = @user.id 
         redirect_to edit_boot_path current_user.id if current_user.role = "boot" 

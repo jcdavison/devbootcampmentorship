@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :email, :pic, :role, :contact_phone
+  attr_accessible :first_name, :last_name, :email, :pic, :role, :contact_phone, :contact_email
   validates_presence_of :email, :first_name, :last_name
   validates_uniqueness_of :email
 
@@ -19,8 +19,8 @@ class User < ActiveRecord::Base
     self.last_name = auth_hash[:info][:last_name]
     self.pic = auth_hash[:info][:image]
     self.cohort_id = opts[:cohort][:cohort_id] unless opts[:cohort].nil?
-    self.contact_email = opts[:user][:email] unless opts[:user].nil?
-  end
+    self.contact_email = self.email 
+ end
 
   def new_auth(auth_hash)
     self.authorizations.build( provider: auth_hash[:provider], uid: auth_hash[:uid], token: auth_hash[:credentials][:token], secret: auth_hash[:credentials][:secret])

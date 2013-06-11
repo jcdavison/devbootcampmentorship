@@ -3,31 +3,4 @@
     %h3.subheader.centered
       %a
         Thank You #{current_user.first_name} for participating as a Mentor!
-.row
-  .large-10.columns.large-centered.panel
-    .row
-      .large-11.column.large-offset-1
-        %h3
-          Next Steps...
-        %ol
-          %li 
-            %h4
-              Fill out your contact information.
-              = form_for current_user do |u|
-                .row
-                  .columns.large-8.large-centered.margin-top
-                    .row.collapse
-                      .large-3.columns
-                        %span.prefix
-                          email
-                      .large-9.columns
-                        = u.text_field :email
-                    .row.collapse
-                      .large-3.columns
-                        %span.prefix
-                          phone #
-                      .large-9.columns
-                        = u.text_field :contact_phone, :placeholder  => "optional but strongly encouraged"
-                .row
-                  .columns.large-3.large-centered
-                    = u.submit "Update Info", class: "button"
+= render "layouts/profile_edit"
