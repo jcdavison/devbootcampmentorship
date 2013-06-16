@@ -1,10 +1,81 @@
 .row
+  .large-11.columns.large-centered
+    %h2.subheader.centered
+      %a
+        Welcome to the DevBootcamp Mentorship Community 
+.row
   .large-10.columns.large-centered
-    = form_for @user, :url => "/auth/linkedin", :method => :get, :class => "panel" do |u|
+    = form_for @user, :class => "panel" do |u|
       %fieldset
         %legend
           %h3.subheader
             Please Tell Us About You
+        .row
+          .large-4.columns
+            .row.collapse
+              .large-3.columns
+                %span.prefix
+                  First
+              .large-9.columns
+                = u.text_field :first_name, placeholder: "Name"
+          .large-4.columns
+            .row.collapse
+              .large-3.columns
+                %span.prefix
+                  Last
+              .large-9.columns
+                = u.text_field :last_name, placeholder: "Name"
+          .large-4.columns
+            .row.collapse
+              .large-3.columns
+                %span.prefix
+                  Email
+              .large-9.columns
+                = u.text_field :email, placeholder: "newmentor@gmail.com"
+        .row
+          .large-4.columns
+            .row.collapse
+              .large-4.columns
+                %span.prefix
+                  Company
+              .large-8.columns
+                = u.text_field :company, placeholder: "Keas.com"
+          .large-4.columns
+            .row.collapse
+              .large-3.columns
+                %span.prefix
+                  Title
+              .large-9.columns
+                = u.text_field :role, placeholder: "Product Hacker"
+          .large-4.columns
+            .row.collapse
+              .large-3.columns
+                %span.prefix
+                  Twitter
+              .large-9.columns
+                = u.text_field :twitter, placeholder: "@jcdavison"
+        .row
+          .large-4.columns
+            .row.collapse
+              .large-3.columns
+                %span.prefix
+                  Phone #
+              .large-9.columns
+                = u.text_field :contact_phone, placeholder: "415-779-5205"
+          .large-4.columns
+            .row.collapse
+              .large-3.columns
+                %span.prefix
+                  Linkedin
+              .large-9.columns
+                = u.text_field :linkedin, placeholder: "http://linkedin.com/in/jcdavison"
+          .large-4.columns
+            .row.collapse
+              .large-3.columns
+                %span.prefix
+                  Github
+              .large-9.columns
+                = u.text_field :repo, placeholder: "https://github.com/rails"
         .row
           .columns.large-10.large-centered
             .row
@@ -16,20 +87,30 @@
                   .subheader.inline
                     Boot (or grad)
                 %br
-                %input{type: "checkbox", name: "mentor"}
+                %input{type: "checkbox", name: "mentor", id: "mentor"}
                   .subheader.inline
                     Mentor
               .columns.large-4
                 #cohort_dropdown.hidden
                   = collection_select :cohort, :cohort_id , Cohort.all, :id, :name,  {:prompt => "Pick a Cohort"}
-        -# .row
-        -#   .columns.large-8.large-centered
-        -#     .row.collapse
-        -#       .large-2.columns
-        -#         %span.prefix
-        -#           email
-        -#       .large-10.columns
-        -#         = u.text_field :email, :placeholder => "someone@gmail.com"
-        .row
-          .columns.large-4.large-centered
-            = u.submit "Login With Linkedin", class: "button expand margin-top"
+        .none#mentor_dropdown
+          .row
+            .columns.large-4
+              %h4.subheader.centered
+                Mentorship Interests
+            .columns.large-8
+              = u.text_area :interests, placeholder: "eg, I'd like to pair program, have boots over for lunch, coffee appts, etc.", class: "textinput" 
+          .row
+            .columns.large-4
+              %h4.subheader.centered
+                Professional Exp.
+            .columns.large-8
+              = u.text_area :interests, placeholder: "eg, Rails hacker at XYZ, product designer at ABC, backyard bbqer, micro-brewer, single speed bike commuter", class: "textinput"
+          .row
+            .columns.large-8.large-centered
+              %a{href: "https://docs.google.com/document/pub?id=1sDWOWzoCh33Li-Kt8Z88zZ1p4tORWWcHHfNF5m7IGrA", target: "new"}
+                I agree to the Dev Bootcamp Placement Agreement.
+              = u.check_box :employment_agreement
+          .row
+            .columns.large-4.large-centered
+              = u.submit "Sign UP !", class: "success button expand margin-top"

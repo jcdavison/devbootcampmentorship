@@ -3,6 +3,9 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
+  def index
+  end
+
   def create
     if @user = User.find_by_email(auth_hash[:email]) && @authorization = Authorization.find_by_uid(auth_hash[:uid])
       session[:current_user_id] = @authorization.user.id 
