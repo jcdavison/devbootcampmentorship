@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130516032744) do
+ActiveRecord::Schema.define(:version => 20130616012422) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -70,6 +70,12 @@ ActiveRecord::Schema.define(:version => 20130516032744) do
     t.boolean  "active"
     t.boolean  "deleted"
     t.integer  "cohort_id"
+    t.string   "twitter"
+    t.string   "company"
+    t.string   "linkedin"
+    t.string   "location"
+    t.text     "passions"
+    t.text     "interests"
   end
 
   add_index "users", ["role"], :name => "index_users_on_role"

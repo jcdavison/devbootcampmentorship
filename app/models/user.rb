@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :email, :pic, :role, :contact_phone, :contact_email
-  validates_presence_of :email, :first_name, :last_name
+  attr_accessible :first_name, :last_name, :email, :pic, :role, :contact_phone, :contact_email, :twitter, :linkedin, :interests, :passions, :location, :company
+  validates_presence_of :email, :first_name
   validates_uniqueness_of :email
 
   has_many :authorizations, :dependent => :destroy
@@ -45,5 +45,25 @@ class User < ActiveRecord::Base
 
   def avail_mentor?
     (cohort && cohort.active?) ? false : true
+  end
+
+  def self.process_wufoo_user(user)
+    if User.find_by_email(user["Field3"])
+      p "user #{user["Field3"]} already exists"
+      return
+    else
+      user = User.new(
+        first_name: user["Field1"],
+        last_name: user["Field530"],
+        email: user["Field3"],
+        company: user["Field315"],
+        linkedin: user["Field527"],
+        twitter: user["Field636"],
+        location: user["Field525"],
+        passions: user["Field535"],
+        interests: user["Field208"]
+      )
+      p user.save!
+    end
   end
 end

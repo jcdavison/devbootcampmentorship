@@ -10,6 +10,7 @@ gem 'omniauth-linkedin'
 gem 'pg'
 gem 'rails', '3.2.8'
 gem 'unicorn'
+gem 'wuparty'
 
 group :development do
   gem 'jazz_hands'

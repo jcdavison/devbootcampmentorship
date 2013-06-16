@@ -9,4 +9,8 @@ class MentorsController < ApplicationController
   def next_steps
 
   end
+
+  def thanks
+
+  end
 end

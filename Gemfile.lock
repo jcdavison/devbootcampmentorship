@@ -77,6 +77,9 @@ GEM
     hashie (2.0.4)
     hike (1.2.2)
     hirb (0.7.1)
+    httparty (0.11.0)
+      multi_json (~> 1.0)
+      multi_xml (>= 0.5.2)
     httpauth (0.2.0)
     i18n (0.6.4)
     jazz_hands (0.5.0)
@@ -217,6 +220,10 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
+    wuparty (1.2.4)
+      httparty (>= 0.6.1)
+      mime-types (>= 1.16)
+      multipart-post (>= 1.0.1)
     yard (0.8.6.1)
     zurb-foundation (4.1.6)
       sass (>= 3.2.0)
@@ -243,4 +250,5 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   uglifier (>= 1.0.3)
   unicorn
+  wuparty
   zurb-foundation (~> 4.1.5)
