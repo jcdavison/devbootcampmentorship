@@ -2,7 +2,7 @@
   .large-11.columns.large-centered
     %h2.subheader.centered
       %a
-        Welcome to the DevBootcamp Mentorship Community 
+        Welcome to the DevBootcamp Mentorship Community
 .row
   .large-10.columns.large-centered
     = form_for @user, :class => "panel" do |u|
@@ -81,7 +81,7 @@
             .row
               .columns.large-5
                 %h4.subheader
-                  I am (click all that apply) 
+                  I am (click all that apply)
               .columns.large-3
                 %input{type: "checkbox", name: "boot", id: "boot"}
                   .subheader.inline
@@ -99,7 +99,7 @@
               %h4.subheader.centered
                 Mentorship Interests
             .columns.large-8
-              = u.text_area :interests, placeholder: "eg, I'd like to pair program, have boots over for lunch, coffee appts, etc.", class: "textinput" 
+              = u.text_area :interests, placeholder: "eg, I'd like to pair program, have boots over for lunch, coffee appts, etc.", class: "textinput"
           .row
             .columns.large-4
               %h4.subheader.centered
