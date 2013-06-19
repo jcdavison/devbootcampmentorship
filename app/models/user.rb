@@ -48,7 +48,9 @@ class User < ActiveRecord::Base
   end
 
   def self.process_wufoo_user(user)
-    return unless user["Field3"]
+
+    return if user["Field3"].empty?
+
     if User.find_by_email(user["Field3"])
       p "user #{user["Field3"]} already exists"
       return
