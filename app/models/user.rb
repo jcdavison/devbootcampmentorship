@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :email, :pic, :role, :contact_phone, :contact_email, :twitter, :linkedin, :interests, :passions, :location, :company
+  attr_accessible :first_name, :last_name, :email, :pic, :role, :contact_phone, :contact_email, :twitter, :linkedin, :interests, :passions, :location, :company, :repo, :employment_agreement
   validates_presence_of :email, :first_name
   validates_uniqueness_of :email
 

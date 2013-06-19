@@ -44,5 +44,12 @@ $ ->
         $("#dropdown_error").addClass("hidden")
   release_cohort_error()
 
+  release_agreement_error = ->
+    $("#agreement").click ->
+      if $("#agreement").is(":checked") is true && $("#agreement_error").hasClass("hidden") is false
+        console.log "agreement error met"
+        $("#agreement_error").addClass("hidden")
+  release_agreement_error()
+
 
 

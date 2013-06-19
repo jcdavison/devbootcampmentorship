@@ -11,6 +11,6 @@ class MentorsController < ApplicationController
   end
 
   def thanks
-
+    @user = User.find(params[:id])
   end
 end

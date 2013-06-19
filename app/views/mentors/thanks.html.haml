@@ -1,33 +1,15 @@
 .row
-  .large-10.columns.large-centered
+  .large-11.columns.large-centered
+    %h1.subheader.centered
+      Thank You For Joining Us On The Journey! 
     %h2.subheader.centered
       %a
-        Thanks for taking the first step!
-.row
-  .large-10.columns.large-centered.panel
-    %h4.subheader.centered
-      Things we'd like you to know:
-    %h4.subheader.centered
-      The next cohort starts on xyz day.  
-    %h4.subheader.centered
-      on xyz day there will be a meet n greet, nothing serious just show up and meet boots
-    %h4.subheader.centered
-      by xyz day you will get assigned to however many boots you said you'd like
-    -# %h3.subheader.centered
-    -#   %a{href: "#", "data-reveal-id" => "gen_info"}
-    -#     What is the mentorship program?
-    -# %h3.subheader.centered
-    -#   %a{href: "#", "data-reveal-id" => "benefits"}
-    -#     What is the benefit to Mentors?
-    -# %h3.subheader.centered
-    -#   %a{href: "#", "data-reveal-id" => "commitment"}
-    -#     What is the time commitment?
-    -# %h3.subheader.centered
-    -#   %a{href: "#", "data-reveal-id" => "responsibilities"}
-    -#     Mentor Responsibilities?
-    -# .row
-    -#   .large-4.columns.large-centered
-    -#     %a{:href=> new_user_path}
-    -#       .button.expand.success
-    -#         Sign Up
--# =render "layouts/onboard_modal"
+        = @user.first_name.capitalize
+        = @user.last_name.capitalize
+    %h3.subheader.centered
+      %a
+        = @user.email.capitalize
+    %h3.subheader.centered
+      %a
+        = @user.contact_phone.capitalize
+= render "layouts/next_step"

@@ -115,6 +115,8 @@
               %a{href: "https://docs.google.com/document/pub?id=1sDWOWzoCh33Li-Kt8Z88zZ1p4tORWWcHHfNF5m7IGrA", target: "new"}
                 I agree to the Dev Bootcamp Placement Agreement.
               = u.check_box :employment_agreement, id: "agreement"
+          .row
+            .columns.large-3.large-centered.agreement_error
               %small#agreement_error.hidden.error
                 please agree to our terms :)
         .row
