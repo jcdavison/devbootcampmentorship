@@ -1,5 +1,5 @@
 GIT
-  remote: git@github.com:bcamarda/wuparty.git
+  remote: git://github.com/bcamarda/wuparty.git
   revision: e81c86bace7bc7106246e3c6459c598eddd8965d
   specs:
     wuparty (1.2.4)
