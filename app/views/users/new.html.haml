@@ -5,7 +5,7 @@
         Welcome to the DevBootcamp Mentorship Community
 .row
   .large-10.columns.large-centered
-    = form_for @user, :class => "panel" do |u|
+    = form_for @user, html: { id: "new_user_form" } do |u|
       %fieldset
         %legend
           %h3.subheader
@@ -17,21 +17,23 @@
                 %span.prefix
                   First
               .large-9.columns
-                = u.text_field :first_name, placeholder: "Name"
+                = u.text_field :first_name, placeholder: "Name", class: "validates", id: "first_name"
+
           .large-4.columns
             .row.collapse
               .large-3.columns
                 %span.prefix
                   Last
               .large-9.columns
-                = u.text_field :last_name, placeholder: "Name"
+                = u.text_field :last_name, placeholder: "Name", class: "validates"
           .large-4.columns
             .row.collapse
               .large-3.columns
                 %span.prefix
                   Email
               .large-9.columns
-                = u.text_field :email, placeholder: "newmentor@gmail.com"
+                = u.text_field :email, placeholder: "newmentor@gmail.com", class: "validates"
+
         .row
           .large-4.columns
             .row.collapse
@@ -93,6 +95,8 @@
               .columns.large-4
                 #cohort_dropdown.hidden
                   = collection_select :cohort, :cohort_id , Cohort.all, :id, :name,  {:prompt => "Pick a Cohort"}
+                %small#dropdown_error.hidden.error
+                  please select a cohort
         .none#mentor_dropdown
           .row
             .columns.large-4
@@ -110,7 +114,9 @@
             .columns.large-8.large-centered
               %a{href: "https://docs.google.com/document/pub?id=1sDWOWzoCh33Li-Kt8Z88zZ1p4tORWWcHHfNF5m7IGrA", target: "new"}
                 I agree to the Dev Bootcamp Placement Agreement.
-              = u.check_box :employment_agreement
-          .row
-            .columns.large-4.large-centered
-              = u.submit "Sign UP !", class: "success button expand margin-top"
+              = u.check_box :employment_agreement, id: "agreement"
+              %small#agreement_error.hidden.error
+                please agree to our terms :)
+        .row
+          .columns.large-4.large-centered
+            = u.submit "Sign UP !", class: "success button expand margin-top"

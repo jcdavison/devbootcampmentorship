@@ -55,7 +55,7 @@ class User < ActiveRecord::Base
       user = User.new(
         first_name: user["Field1"],
         last_name: user["Field530"],
-        email: user["Field3"],
+        email: user["Field3"] || "example@example.com",
         company: user["Field315"],
         linkedin: user["Field527"],
         twitter: user["Field636"],
