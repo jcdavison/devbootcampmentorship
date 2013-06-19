@@ -2,6 +2,8 @@
   .large-11.columns.large-centered
     %h1.subheader.centered
       Thank You For Joining Us On The Journey! 
+    %h5.subheader.centered
+      You are the #{User.count.ordinalize} mentor to join our community!
     %h2.subheader.centered
       %a
         = @user.first_name.capitalize
