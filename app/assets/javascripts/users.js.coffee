@@ -23,7 +23,7 @@ $ ->
         $(element).addClass("error")
         presence_error_release(element)
         errors += 1
-    if $("#agreement").is(":checked") isnt true
+    if $("#agreement").is(":checked") isnt true && $("#boot").is(":checked") is false
       $("#agreement_error").removeClass("hidden")
       errors += 1
     if errors is 0
