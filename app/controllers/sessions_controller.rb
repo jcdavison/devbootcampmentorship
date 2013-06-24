@@ -7,7 +7,6 @@ class SessionsController < ApplicationController
     @authorization = Authorization.find_by_uid(auth_hash[:uid])
     @authorized_user = @authorization.user if @authorization
     @user = User.find_by_email auth_hash[:info][:email]
-    binding.pry
     if @authorized_user
       set_session_id @authorized_user
       redirect_to main_index_path
