@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
       redirect_to main_index_path
     elsif @user
       Authorization.create_auth(auth_hash, @user.id)
+      set_session_id @user
       redirect_to main_index_path
     else
       redirect_to '/sign_up'

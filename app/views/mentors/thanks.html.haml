@@ -9,6 +9,8 @@
       %a
         your email :: 
         = @user.email.capitalize
+        - unless current_user
+          = link_to "Connect Via Linkedin!", "/auth/linkedin", class: "button rounded success tiny"
     %h3.subheader.centered
       %a
         = @user.contact_phone.capitalize

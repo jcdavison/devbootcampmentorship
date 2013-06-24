@@ -9,8 +9,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @user = User.find(session[:current_user_id])
-    @user
+    @user = User.find_by_id(session[:current_user_id])
   end
 
   def user_access?
@@ -19,9 +18,13 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def admin?
-    unless logged_in? && current_user.admin
-      redirect_to root_path
+  def is_admin?
+    if current_user.admin
+      return true
+    elsif current_user
+      redirect_to thank_you_path(id: current_user.id)
+    else
+      redirect_to sign_up_path
     end
   end
 

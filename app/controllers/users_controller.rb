@@ -7,17 +7,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    binding.pry
     @user = User.new(params[:user])
     if @user.save
       redirect_to thank_you_path(id: @user.id)
     else
-      redirect_to sign_up_path
+      redirect_to :back
     end
   end
 
-  def update
-  end
   protected
 
   def auth_hash
