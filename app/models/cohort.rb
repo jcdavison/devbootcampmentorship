@@ -1,5 +1,5 @@
 class Cohort < ActiveRecord::Base
-  attr_accessible :end_date, :name, :start_date
+  attr_accessible :end_date, :name, :start_date, :display
   has_many :users
   has_many :commitments
   has_many :mentors, :through => :commitments, :source => :user

@@ -17,7 +17,7 @@
                 %span.prefix
                   First
               .large-9.columns
-                = u.text_field :first_name, placeholder: "Name", class: "validates", id: "first_name"
+                = u.text_field :first_name, placeholder: "Name", class: "validates_presence", id: "first_name"
 
           .large-4.columns
             .row.collapse
@@ -25,14 +25,14 @@
                 %span.prefix
                   Last
               .large-9.columns
-                = u.text_field :last_name, placeholder: "Name", class: "validates"
+                = u.text_field :last_name, placeholder: "Name", class: "validates_presence"
           .large-4.columns
             .row.collapse
               .large-3.columns
                 %span.prefix
                   Email
               .large-9.columns
-                = u.text_field :email, placeholder: "newmentor@gmail.com", class: "validates"
+                = u.text_field :email, placeholder: "newmentor@gmail.com", class: "validates_presence"
 
         .row
           .large-4.columns
@@ -83,21 +83,17 @@
             .row
               .columns.large-5
                 %h4.subheader
-                  I am (click all that apply)
+                  I am also a 
               .columns.large-3
-                %input{type: "checkbox", name: "boot", id: "boot"}
-                  .subheader.inline
-                    Boot (or grad)
-                %br
-                %input{type: "checkbox", name: "mentor", id: "mentor"}
-                  .subheader.inline
-                    Mentor
+                %input{type: "checkbox", name: "boot", id: "boot", class: "checkbox"}
+                  %h4.subheader.inline
+                    Boot 
               .columns.large-4
-                #cohort_dropdown.hidden
+                #cohort_dropdown.hidden.top
                   = collection_select :cohort, :cohort_id , Cohort.all, :id, :name,  {:prompt => "Pick a Cohort"}
-                %small#dropdown_error.hidden.error
+                %small#cohort_error.hidden.error.top
                   please select a cohort
-        .none#mentor_dropdown
+        #mentor_dropdown
           .row
             .columns.large-4
               %h4.subheader.centered
@@ -116,7 +112,7 @@
                 I agree to the Dev Bootcamp Placement Agreement.
               = u.check_box :employment_agreement, id: "agreement"
           .row
-            .columns.large-3.large-centered.agreement_error
+            .columns.large-4.large-centered.top
               %small#agreement_error.hidden.error
                 please agree to our terms :)
         .row

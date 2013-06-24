@@ -1,55 +1,58 @@
 $ ->
+
   show_boot_dropdown = ->
     $("#boot").change ->
       $("#cohort_dropdown").toggleClass("hidden")
   show_boot_dropdown()
 
-  show_mentor_dropdown = ->
-    $("#mentor").change ->
-      $("#mentor_dropdown").toggle()
-  show_mentor_dropdown()
-
   validate_form = ->
     $("#new_user_form").submit ->
-      status = "submit"
-      $("input.validates").each ( index, element ) =>
-        if $(element).val() is ""
-          $(element).addClass("error")
-          status = "notsubmit"
+      submit = true
+      if validate_presence() is "invalid" 
+        submit = false
+      if validate_cohort_selection() is "invalid"
+        submit = false
+      submit
 
-        if $(element).val() isnt ""
-          $(element).removeClass("error")
-          status = "submit"
+  validate_presence = ->
+    errors = 0
+    $("input.validates_presence").each ( index, element ) ->
+      if $(element).val().length isnt 0 && $(element).hasClass("error")
+        $(element).removeClass("error")
+      if $(element).val().length is 0
+        $(element).addClass("error")
+        presence_error_release(element)
+        errors += 1
+    if $("#agreement").is(":checked") isnt true
+      $("#agreement_error").removeClass("hidden")
+      errors += 1
+    if errors is 0
+      return "valid"
+    else
+      return "invalid"
 
-      boot_status = $("#boot").is(":checked")
-      if boot_status is true 
-        if $("select option:selected").val() is ""
-          $("#dropdown_error").removeClass("hidden")
-          status = "notsubmit"
-      
-      mentor_status = $("#mentor").is(":checked")
-      if mentor_status is true
-        if $("#agreement").is(":checked") is false
-          $("#agreement_error").removeClass("hidden")
-          status = "notsubmit"
-      return false if status is "notsubmit"
-      
+  presence_error_release = (element) ->
+    $(element).focus ->
+      $(element).blur ->
+        if $(element).val().length isnt 0 && $(element).hasClass("error")
+          $(@).removeClass("error")
 
-  validate_form()
+  validate_cohort_selection = ->
+    input = $("input#boot")
+    if input.is(":checked") && $("#cohort_cohort_id").val().length is 0
+      $("#cohort_error").removeClass("hidden")
+      release_cohort_error()
+      return "invalid"
+    else
+      return "valid"
 
   release_cohort_error = ->
-    $("#boot").click ->
-      if $("#boot").is(":checked") is false && $("#dropdown_error").hasClass("hidden") is false
-        console.log "conditions met"
-        $("#dropdown_error").addClass("hidden")
-  release_cohort_error()
+    $("#cohort_cohort_id").change ->
+      $("#cohort_error").addClass("hidden")
 
-  release_agreement_error = ->
+  agreement_error_release = ->
     $("#agreement").click ->
-      if $("#agreement").is(":checked") is true && $("#agreement_error").hasClass("hidden") is false
-        console.log "agreement error met"
-        $("#agreement_error").addClass("hidden")
-  release_agreement_error()
+      $("#agreement_error").addClass("hidden")
+  agreement_error_release()
 
-
-
+  validate_form()
