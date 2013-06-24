@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    binding.pry
     @user = User.new(params[:user])
     if @user.save
       redirect_to thank_you_path(id: @user.id)

@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :email, :pic, :role, :contact_phone, :contact_email, :twitter, :linkedin, :interests, :passions, :location, :company, :repo, :employment_agreement, :admin
+  attr_accessible :first_name, :last_name, :email, :pic, :role, :contact_phone, :contact_email, :twitter, :linkedin, :interests, :passions, :location, :company, :repo, :employment_agreement, :admin, :cohort_id
   validates_presence_of :email, :first_name
   validates_uniqueness_of :email
 
@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
   end
 
   def boot_status
+    return unless self.cohort
     if cohort.try(:end_date) > Date.today
       "Boot"
     elsif cohort.try(:end_date) < Date.today
