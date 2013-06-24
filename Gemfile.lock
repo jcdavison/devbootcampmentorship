@@ -173,6 +173,8 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    sendgrid (1.2.0)
+      json
     slop (3.4.4)
     sprockets (2.1.3)
       hike (~> 1.2)
@@ -216,6 +218,7 @@ DEPENDENCIES
   rspec
   rspec-rails
   sass-rails (~> 3.2.3)
+  sendgrid
   uglifier (>= 1.0.3)
   unicorn
   wuparty (~> 1.2.4)!

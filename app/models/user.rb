@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
     self.last_name = auth_hash[:info][:last_name]
     self.pic = auth_hash[:info][:image]
     self.cohort_id = opts[:cohort][:cohort_id] unless opts[:cohort].nil?
-    self.contact_email = self.email 
+    self.contact_email = self.email
  end
 
   def new_auth(auth_hash)
@@ -53,25 +53,33 @@ class User < ActiveRecord::Base
   end
 
   def self.process_wufoo_user(user)
+    users = []
+    errors = []
+    opts = wufoo_opts(user)
+    u = User.new(opts)
+    u.email = "user_#{User.last.id + 1}_email@devbootcamp.com" if u.email.nil?
+    return if email_taken?(u)
+    u.first_name = "temporary_name" if u.first_name.nil?
+    u.save!
+    puts "User: #{u.id} given a temporary email!" if opts[:email].nil?
+    puts "User: #{u.id} given a temporary first name!" if opts[:first_name].nil?
+  end
 
-    return if user["Field3"].empty?
+  def self.email_taken?(user)
+    User.find_by_email(user.email).present?
+  end
 
-    if User.find_by_email(user["Field3"])
-      p "user #{user["Field3"]} already exists"
-      return
-    else
-      user = User.new(
-        first_name: user["Field1"],
-        last_name: user["Field530"],
-        email: user["Field3"] || "example@example.com",
-        company: user["Field315"],
-        linkedin: user["Field527"],
-        twitter: user["Field636"],
-        location: user["Field525"],
-        passions: user["Field535"],
-        interests: user["Field208"]
-      )
-      p user.save!
-    end
+  def self.wufoo_opts(user)
+    opts = {}
+    opts[:first_name] = user["Field1"] unless user["Field1"].blank?
+    opts[:last_name] = user["Field530"] unless user["Field530"].blank?
+    opts[:email] = user["Field3"].downcase unless user["Field3"].blank?
+    opts[:company] = user["Field315"] unless user["Field315"].blank?
+    opts[:linkedin] = user["Field527"] unless user["Field527"].blank?
+    opts[:twitter] = user["Field636"] unless user["Field636"].blank?
+    opts[:location] = user["Field525"] unless user["Field525"].blank?
+    opts[:passions] = user["Field535"] unless user["Field535"].blank?
+    opts[:interests] = user["Field208"] unless user["Field208"].blank?
+    opts
   end
 end
