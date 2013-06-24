@@ -20,13 +20,13 @@ class ApplicationController < ActionController::Base
   end
 
   def admin?
-    logged_in? && current_user.admin == true ? true : false
+    unless logged_in? && current_user.admin
+      redirect_to root_path
+    end
   end
 
   def route_user(user)
     redirect_to '/thank_you'
-    # redirect_to edit_mentor_path user if user.avail_mentor? && user.mentees.empty?
-    # redirect_to edit_boot_path user if ! user.avail_mentor?
   end
 
   helper_method :logged_in?, :current_user, :user_access?, :admin?

@@ -14,7 +14,8 @@ gem 'wuparty', '~> 1.2.4', :git => "git://github.com/bcamarda/wuparty.git"
 gem 'jquery-validation-rails'
 
 group :development do
-  gem 'jazz_hands'
+  gem 'pry'
+  gem 'pry-debugger'
 end
 
 group :test do

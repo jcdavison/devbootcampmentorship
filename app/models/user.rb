@@ -47,6 +47,10 @@ class User < ActiveRecord::Base
     (cohort && cohort.active?) ? false : true
   end
 
+  def admin!
+    self.admin = true
+  end
+
   def self.process_wufoo_user(user)
 
     return if user["Field3"].empty?

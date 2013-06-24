@@ -38,9 +38,6 @@ GEM
       i18n (~> 0.6)
       multi_json (~> 1.0)
     arel (3.0.2)
-    awesome_print (1.1.0)
-    binding_of_caller (0.7.1)
-      debug_inspector (>= 0.0.1)
     builder (3.0.4)
     cancan (1.6.9)
     coderay (1.0.9)
@@ -52,8 +49,6 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     columnize (0.3.6)
-    coolline (0.4.2)
-    debug_inspector (0.0.2)
     debugger (1.5.0)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
@@ -61,7 +56,6 @@ GEM
     debugger-linecache (1.2.0)
     debugger-ruby_core_source (1.2.0)
     diff-lcs (1.2.4)
-    diffy (2.1.4)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -72,10 +66,6 @@ GEM
       railties (>= 3.0.0)
     faraday (0.8.7)
       multipart-post (~> 1.1)
-    grit (2.5.0)
-      diff-lcs (~> 1.1)
-      mime-types (~> 1.15)
-      posix-spawn (~> 0.3.6)
     haml (4.0.2)
       tilt
     haml-rails (0.4)
@@ -85,25 +75,11 @@ GEM
       railties (>= 3.1, < 4.1)
     hashie (2.0.4)
     hike (1.2.2)
-    hirb (0.7.1)
     httparty (0.11.0)
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
     httpauth (0.2.0)
     i18n (0.6.4)
-    jazz_hands (0.5.0)
-      awesome_print (~> 1.1.0)
-      coderay (~> 1.0.9)
-      coolline (>= 0.4.0)
-      hirb (~> 0.7.1)
-      pry (~> 0.9.12)
-      pry-debugger (~> 0.2.2)
-      pry-doc (~> 0.4.4)
-      pry-git (~> 0.2.3)
-      pry-rails (~> 0.2.2)
-      pry-remote (>= 0.1.7)
-      pry-stack_explorer (~> 0.4.9)
-      railties (>= 3.0, < 5.0)
     jbuilder (1.4.0)
       activesupport (>= 3.0.0)
       multi_json (>= 1.2.0)
@@ -144,7 +120,6 @@ GEM
       omniauth (~> 1.0)
     pg (0.15.1)
     polyglot (0.3.3)
-    posix-spawn (0.3.6)
     pry (0.9.12.1)
       coderay (~> 1.0.5)
       method_source (~> 0.8)
@@ -152,21 +127,6 @@ GEM
     pry-debugger (0.2.2)
       debugger (~> 1.3)
       pry (~> 0.9.10)
-    pry-doc (0.4.5)
-      pry (>= 0.9)
-      yard (>= 0.8)
-    pry-git (0.2.3)
-      diffy
-      grit
-      pry (>= 0.9.8)
-    pry-rails (0.2.2)
-      pry (>= 0.9.10)
-    pry-remote (0.1.7)
-      pry (~> 0.9)
-      slop (~> 3.0)
-    pry-stack_explorer (0.4.9)
-      binding_of_caller (>= 0.7)
-      pry (~> 0.9.11)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -231,7 +191,6 @@ GEM
       kgio (~> 2.6)
       rack
       raindrops (~> 0.7)
-    yard (0.8.6.1)
     zurb-foundation (4.1.6)
       sass (>= 3.2.0)
 
@@ -244,7 +203,6 @@ DEPENDENCIES
   debugger
   factory_girl_rails
   haml-rails
-  jazz_hands
   jbuilder
   jquery-rails
   jquery-validation-rails
@@ -252,6 +210,8 @@ DEPENDENCIES
   omniauth (~> 1.1.1)
   omniauth-linkedin
   pg
+  pry
+  pry-debugger
   rails (= 3.2.8)
   rspec
   rspec-rails

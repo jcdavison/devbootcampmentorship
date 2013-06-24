@@ -1,23 +1,23 @@
 class SessionsController < ApplicationController
-  def create
-    # p params
-    # if @authorization = Authorization.find_by_uid(auth_hash[:uid])
-    #   session[:current_user_id] = @authorization.user.id 
-    #   redirect_to edit_boot_path current_user.id if current_user.role = "boot" 
-    #   redirect_to edit_mentor_path current_user.id if current_user.role = "mentor" 
-    # else
-    #   @user = User.new
-    #   @user.set_attributes(auth_hash)
-    #   if @user.save
-    #     @user.new_auth(auth_hash)
-    #     session[:current_user_id] = @user.id 
-    #     redirect_to edit_boot_path current_user.id if current_user.role = "boot" 
-    #   else
-    #     redirect_to root_path
-    #   end
-    # end
+  def new
+
   end
 
+  def create
+    @authorization = Authorization.find_by_uid(auth_hash[:uid])
+    @authorized_user = @authorization.user if @authorization
+    @user = User.find_by_email auth_hash[:info][:email]
+    binding.pry
+    if @authorized_user
+      set_session_id @authorized_user
+      redirect_to main_index_path
+    elsif @user
+      Authorization.create_auth(auth_hash, @user.id)
+      redirect_to main_index_path
+    else
+      redirect_to '/sign_up'
+    end
+  end
 
   def destroy
     reset_session

@@ -1,5 +1,5 @@
 class MainController < ApplicationController
-  before_filter :user_access?
+  before_filter :admin?
   def index
   end
 end
