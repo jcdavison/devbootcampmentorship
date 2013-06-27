@@ -115,12 +115,12 @@
             .columns.large-8
               = u.text_area :interests, placeholder: "eg, Rails hacker at XYZ, product designer at ABC, backyard bbqer, micro-brewer, single speed bike commuter", class: "textinput"
           .row
-            .columns.large-8.large-centered
+            .columns.large-8.large-centered.hideforboots
               %a{href: "https://docs.google.com/document/pub?id=1sDWOWzoCh33Li-Kt8Z88zZ1p4tORWWcHHfNF5m7IGrA", target: "new"}
                 I agree to the Dev Bootcamp Placement Agreement.
               = u.check_box :employment_agreement, id: "agreement"
           .row
-            .columns.large-4.large-centered.top
+            .columns.large-4.large-centered.top.hideforboots
               %small#agreement_error.hidden.error
                 please agree to our terms :)
         .row
