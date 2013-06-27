@@ -17,6 +17,13 @@ class User < ActiveRecord::Base
   def self.recent
     User.where(created_at: (Time.now - 14.days)..Time.now)
   end
+  def self.recent_boot
+    User.recent.select {|u| u.boot_status == ("Alumni" || "Boot") }
+  end
+
+  def self.recent_mentor
+    User.recent.select {|u| u.avail_mentor? }
+  end
 
   def set_attributes(auth_hash, opts = {})
     self.email = auth_hash[:info][:email]
