@@ -12,6 +12,11 @@ class User < ActiveRecord::Base
   has_many :commitments
   has_many :cohorts, :through => :commitments
 
+  default_scope where(location: "San Francisco")
+
+  def self.recent
+    User.where(created_at: (Time.now - 14.days)..Time.now)
+  end
 
   def set_attributes(auth_hash, opts = {})
     self.email = auth_hash[:info][:email]
