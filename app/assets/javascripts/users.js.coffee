@@ -3,7 +3,6 @@ $ ->
   show_boot_dropdown = ->
     $("#boot").change ->
       $("#cohort_dropdown").toggleClass("hidden")
-      $(".hideforboots").toggleClass("hidden")
   show_boot_dropdown()
 
 
