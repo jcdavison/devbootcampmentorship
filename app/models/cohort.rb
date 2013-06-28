@@ -20,6 +20,10 @@ class Cohort < ActiveRecord::Base
     self.end_date >= Date.today
   end
 
+  def self.all_active
+    Cohort.all.select {|cohort| cohort.active? }
+  end
+
   def available_mentorships
     boots.count - mentors.count
   end

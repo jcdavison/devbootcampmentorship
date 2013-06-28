@@ -1,4 +1,9 @@
 .row
   .large-10.columns.large-centered.panel
+    %h4.subheader.centered
+      %a
+        Active Cohorts
     %h3.subheader.centered
-      Admin Section, should only be accesible to admin = true
+      - @active_cohorts.each do |cohort|
+        = link_to cohort.name, cohort_path(cohort.id) 
+        boots: #{cohort.boots.count} mentors: #{cohort.mentors.count}
