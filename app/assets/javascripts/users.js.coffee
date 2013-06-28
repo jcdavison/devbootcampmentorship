@@ -5,14 +5,14 @@ $ ->
       $("#cohort_dropdown").toggleClass("hidden")
   show_boot_dropdown()
 
-
-
   validate_form = ->
     $("#new_user_form").submit ->
       submit = true
       if validate_presence() is "invalid" 
         submit = false
       if validate_cohort_selection() is "invalid"
+        submit = false
+      if validate_agreement() is "invalid"
         submit = false
       submit
 
@@ -29,13 +29,10 @@ $ ->
           $(element).addClass("error")
           presence_error_release(element)
           errors += 1
-      if $("#agreement").is(":checked") isnt true && $("#boot").is(":checked") is false
-        $("#agreement_error").removeClass("hidden")
-        errors += 1
-      if errors is 0
-        return "valid"
-      else
-        return "invalid"
+    if errors is 0
+      return "valid"
+    else
+      return "invalid"
 
   presence_error_release = (element) ->
     $(element).focus ->
@@ -54,6 +51,18 @@ $ ->
         return 'invalid'
       if select.val().length > 0
         return 'valid'
+
+  validate_agreement = ->
+    agreement = $("#agreement")
+    if agreement.length is 0
+      return 'valid'
+    if agreement.length > 0
+      status = agreement.is(":checked")
+      if status is true
+        return 'valid'
+      if status is false
+        $("#agreement_error").removeClass("hidden")
+        return 'invalid'
 
   release_cohort_error = ->
     $("#user_cohort_id").change ->
