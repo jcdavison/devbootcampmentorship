@@ -1,0 +1,16 @@
+.row
+  .columns.large-10.large-centered
+    .row
+      .columns.large-5
+        %h4.subheader
+          I am also a 
+      .columns.large-3
+        %input{type: "checkbox", name: "boot", id: "boot", class: "checkbox"}
+          %h4.subheader.inline
+            Boot 
+      .columns.large-4
+        #cohort_dropdown.hidden.top
+          = collection_select :user, :cohort_id , Cohort.all, :id, :name,  {:prompt => "Pick a Cohort"}
+        %small#cohort_error.hidden.error.top
+          please select a cohort
+

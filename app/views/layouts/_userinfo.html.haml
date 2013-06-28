@@ -1,0 +1,76 @@
+.row
+  .large-5.columns.large-offset-1
+    .row.collapse
+      .large-3.columns
+        %span.prefix
+          First
+      .large-9.columns
+        = u.text_field :first_name, placeholder: "Name", class: "validates_presence", id: "first_name"
+  .large-5.columns
+    .row.collapse
+      .large-3.columns
+        %span.prefix
+          Last
+      .large-9.columns
+        = u.text_field :last_name, placeholder: "Name", class: "validates_presence"
+  .large-1.columns
+.row
+  .large-5.columns.large-offset-1
+    .row.collapse
+      .large-3.columns
+        %span.prefix
+          Email
+      .large-9.columns
+        = u.text_field :email, placeholder: "newmentor@gmail.com", class: "validates_presence"
+  .large-5.columns
+    .row.collapse
+      .large-3.columns
+        %span.prefix
+          Location
+      .large-9.columns
+        = select_tag :location, options_for_select(["San Francisco", "Chicago"]) 
+  .large-1.columns
+.row
+  .large-4.columns
+    .row.collapse
+      .large-4.columns
+        %span.prefix
+          Company
+      .large-8.columns
+        = u.text_field :company, placeholder: "Keas.com"
+  .large-4.columns
+    .row.collapse
+      .large-3.columns
+        %span.prefix
+          Title
+      .large-9.columns
+        = u.text_field :role, placeholder: "Product Hacker"
+  .large-4.columns
+    .row.collapse
+      .large-3.columns
+        %span.prefix
+          Twitter
+      .large-9.columns
+        = u.text_field :twitter, placeholder: "@jcdavison"
+.row
+  .large-4.columns
+    .row.collapse
+      .large-3.columns
+        %span.prefix
+          Phone #
+      .large-9.columns
+        = u.text_field :contact_phone, placeholder: "415-779-5205"
+  .large-4.columns
+    .row.collapse
+      .large-3.columns
+        %span.prefix
+          Linkedin
+      .large-9.columns
+        = u.text_field :linkedin, placeholder: "http://linkedin.com/in/jcdavison"
+  .large-4.columns
+    .row.collapse
+      .large-3.columns
+        %span.prefix
+          Github
+      .large-9.columns
+        = u.text_field :repo, placeholder: "https://github.com/rails"

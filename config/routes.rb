@@ -3,7 +3,8 @@ BootBook::Application.routes.draw do
   match '/sign_out', to: 'sessions#destroy'
   match '/sign_in'  => redirect('/auth/linkedin')
   match '/thank_you', to: 'mentors#thanks'
-  match '/sign_up', to: 'users#new'
+  match '/mentor_sign_up', to: 'users#new_mentor'
+  match '/boot_sign_up', to: 'users#new_boot'
   resources :users, :main
   root :to => "users#index"
 end

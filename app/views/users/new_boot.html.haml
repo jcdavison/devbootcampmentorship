@@ -1,0 +1,30 @@
+.row
+  .large-11.columns.large-centered
+    %h2.subheader.centered
+      %a
+        Welcome to the DevBootcamp Mentorship Community
+.row
+  .large-10.columns.large-centered
+    = form_for @user, html: { id: "new_user_form" } do |u|
+      %fieldset
+        %legend
+          %h3.subheader
+            Please Tell Us About You
+        = render partial: 'layouts/userinfo', locals: { u: u }
+        .row
+          .columns.large-10.large-centered
+            .row
+              .columns.large-3.large-centered
+                #cohort_dropdown.top
+                  = collection_select :user, :cohort_id , Cohort.all, :id, :name,  {:prompt => "Pick a Cohort"}
+                %small#cohort_error.hidden.error.top
+                  please select a cohort
+        .row
+          .columns.large-4
+            %h4.subheader.centered
+              Interests and Special Requests!
+          .columns.large-8
+            = u.text_area :interests, placeholder: "I'd like a mentor who knows Node.js, I like oreo's, I'd like a unicorn to pair with!", class: "textinput"
+        .row
+          .columns.large-4.large-centered
+            = u.submit "Sign UP !", class: "success button expand margin-top"

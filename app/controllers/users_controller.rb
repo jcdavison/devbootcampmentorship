@@ -1,5 +1,10 @@
 class UsersController < ApplicationController
-  def new
+  def new_mentor
+    @user = User.new
+    @locations = [ "San Francisco", "Chicago"]
+  end
+
+  def new_boot
     @user = User.new
     @locations = [ "San Francisco", "Chicago"]
   end
@@ -8,6 +13,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    binding.pry
     @user = User.new(params[:user])
     @user.location = params[:location]
     if @user.save
