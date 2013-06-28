@@ -5,6 +5,7 @@
         %h2.subheader.centered
           %a
             =@cohort.name.capitalize
+            (#{@cohort.boots.count})
       .large-3.columns
         .button.tiny.assign
           Assign Mentees
@@ -20,19 +21,10 @@
           graduation: 
           %a
             = @cohort.end_date
-    .row
-      .large-6.columns
-        %h4.subheader.centered
-          boots: 
-          = @cohort.users.count
-      .large-6.columns
-        %h4.subheader.centered
-          mentors: 
-          = @cohort.mentors.count
-      .large-2.columns
     %h3.subheader
       %a
-        Stats
+        Mentors
+        (#{@cohort.mentors.count})
     - @cohort.mentors.each do |mentor|
       .row
         .large-11.columns.large-offset-1
