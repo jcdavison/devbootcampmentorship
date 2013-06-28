@@ -21,8 +21,12 @@ class User < ActiveRecord::Base
     User.recent.select {|u| u.boot_status == ("Alumni" || "Boot") }
   end
 
-  def self.recent_mentor
+  def self.recent_mentors
     User.recent.select {|u| u.avail_mentor? }
+  end
+
+  def full_name
+    first_name + " " + last_name
   end
 
   def set_attributes(auth_hash, opts = {})
