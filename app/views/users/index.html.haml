@@ -14,8 +14,13 @@
       %a{href: "#", "data-reveal-id" => "commitment"}
         What is the time commitment?
     .row
-      .large-4.columns.large-centered
+      .large-3.columns.large-offset-2
         %a{:href=> mentor_sign_up_path}
           .button.expand.success
-            Sign Up
+            Mentor Sign Up
+      .large-3.columns.large-offset-2
+        %a{:href=> boot_sign_up_path}
+          .button.expand.success
+            Boot Sign Up
+      .large-1.columns
 =render "layouts/onboard_modal"
