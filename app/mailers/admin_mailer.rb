@@ -1,5 +1,6 @@
 class AdminMailer < ActionMailer::Base
   default from: "admin@devbootcampmentorship.com"
+  layout "mailer"
 
   def test_email
     mail(to: "brett.coding@gmail.com", subject: "Test Email!")
