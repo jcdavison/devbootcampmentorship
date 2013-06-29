@@ -40,7 +40,7 @@
         - @cohort.boots.each do |boot|
           .row
             .large-11.columns.large-offset-1
-              .row
+              .row.padded
                 .large-4.columns
                   #{boot.first_name} #{boot.last_name}
                 .large-4.columns
@@ -51,9 +51,8 @@
                 .row
                   .large-8.columns.large-centered
                     .ul.no-bullet
-                      - boot.pairings.each do |pair|
-                        %li
+                      - boot.pairings.each_with_index do |pair, n|
+                        %li.padded
+                          mentor # #{n+1}
                           = User.find(pair.mentor.id).full_name
-                          | 
-                          = User.find(pair.mentor.id).email
 =render "layouts/notification_modal"
