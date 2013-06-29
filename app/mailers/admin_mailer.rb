@@ -7,6 +7,6 @@ class AdminMailer < ActionMailer::Base
 
   def notify_pair(to, content)
     @content = content
-    mail(to: to, subject: "test email", body: @content)
+    mail(to: to, subject: "test email")
   end
 end
