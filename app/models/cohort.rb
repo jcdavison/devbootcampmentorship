@@ -33,7 +33,6 @@ class Cohort < ActiveRecord::Base
     cohort.pairings.each do |pairing|
       mentor = User.find_by_id(pairing.mentor_id)
       mentee = User.find_by_id(pairing.mentee_id)
-      binding.pry
       mail = AdminMailer.notify_pair(mentor, mentee) 
       mail.deliver
     end
