@@ -1,20 +1,20 @@
 .row
   .large-10.columns.large-centered.panel
     .row
-      .large-6.columns
-        %h3.subheader.centered
+      .large-9.columns
+        %h3.subheader.centered.inline
           %a
             =@cohort.name.capitalize
-            (#{@cohort.boots.count})
-      .large-6.columns
-        %h5.subheader.centered
+        %h6.subheader.centered.inline
           start: 
           %a
             = @cohort.start_date
-        %h5.subheader.centered
+        %h6.subheader.centered.inline
           graduation: 
           %a
             = @cohort.end_date
+      .large-3.columns
+        = link_to "Notify All Pairs!", "#", class: "button tiny radius success margin-top"
     .row
       = render "layouts/pairing_tool"
     .row
@@ -30,7 +30,7 @@
                 .large-4.columns
                   #{mentor.first_name} #{mentor.last_name}
                 .large-4.columns
-                  = mentor.email
+                  = mail_to mentor.email
                 .large-4.columns
                   = mentor.pairings.count
         %h3.subheader
@@ -44,15 +44,16 @@
                 .large-4.columns
                   #{boot.first_name} #{boot.last_name}
                 .large-4.columns
-                  = boot.email
+                  = mail_to boot.email
                 .large-1.columns
                   = boot.pairings.count
               - if boot.pairings
-                - boot.pairings.each do |pair|
-                  .row
-                    .large-8.columns.large-centered
-                      = User.find(pair.mentor.id).full_name
-                      | 
-                      = User.find(pair.mentor.id).email
-                      = link_to "Notify!", "#", :data  => {:"reveal-id"  =>  "notify"}, class: "button success tiny radius"
+                .row
+                  .large-8.columns.large-centered
+                    .ul.no-bullet
+                      - boot.pairings.each do |pair|
+                        %li
+                          = User.find(pair.mentor.id).full_name
+                          | 
+                          = User.find(pair.mentor.id).email
 =render "layouts/notification_modal"
