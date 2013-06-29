@@ -32,6 +32,7 @@
                 .large-4.columns
                   = mail_to mentor.email
                 .large-4.columns
+                  Mentees:
                   = mentor.mentees.count
         %h3.subheader
           %a
@@ -45,7 +46,8 @@
                   #{boot.first_name} #{boot.last_name}
                 .large-4.columns
                   = mail_to boot.email
-                .large-1.columns
+                .large-4.columns
+                  Mentors: 
                   = boot.pairings.count
                   - unless boot.pairings
                     %hr
