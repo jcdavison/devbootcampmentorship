@@ -1,0 +1,13 @@
+= form_for @pairing, method: :put, url: pairing_path(@cohort) do |pairing|
+  .large-2.columns
+    %h4.subheader.centered
+      Mentor
+  .large-3.columns
+    = collection_select :pairing, :mentor_id , @mentors, :id, :full_name,  {:prompt => "Pick a mentor"}, class: "margin-top"
+  .large-2.columns
+    %h4.subheader.centered
+      Boots
+  .large-3.columns
+    = collection_select :pairing, :mentee_id , @boots, :id, :full_name,  {:prompt => "Pick a boot"}, class: "margin-top"
+  .large-2.columns
+    = pairing.submit 'Create Pairing', class: "margin-top button tiny"

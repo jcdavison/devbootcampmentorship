@@ -1,37 +1,58 @@
 .row
   .large-10.columns.large-centered.panel
     .row
-      .large-8.columns
-        %h2.subheader.centered
+      .large-6.columns
+        %h3.subheader.centered
           %a
             =@cohort.name.capitalize
             (#{@cohort.boots.count})
-      .large-3.columns
-        .button.tiny.assign
-          Assign Mentees
-      .large-1.columns
-    .row
       .large-6.columns
-        %h4.subheader.centered
+        %h5.subheader.centered
           start: 
           %a
             = @cohort.start_date
-      .large-6.columns
-        %h4.subheader.centered
+        %h5.subheader.centered
           graduation: 
           %a
             = @cohort.end_date
-    %h3.subheader
-      %a
-        Mentors
-        (#{@cohort.mentors.count})
-    - @cohort.mentors.each do |mentor|
-      .row
-        .large-11.columns.large-offset-1
+    .row
+      = render "layouts/pairing_tool"
+    .row
+      .large-12.columns.large-centered
+        %h3.subheader
+          %a
+            Mentors
+            (#{@cohort.mentors.count})
+        - @cohort.mentors.each do |mentor|
           .row
-            .large-4.columns
-              #{mentor.first_name} #{mentor.last_name}
-            .large-4.columns
-              = mentor.email
-            .large-4.columns
-              = mentor.contact_phone
+            .large-11.columns.large-offset-1
+              .row
+                .large-4.columns
+                  #{mentor.first_name} #{mentor.last_name}
+                .large-4.columns
+                  = mentor.email
+                .large-4.columns
+                  = mentor.pairings.count
+        %h3.subheader
+          %a
+            Boots
+            (#{@cohort.boots.count})
+        - @cohort.boots.each do |boot|
+          .row
+            .large-11.columns.large-offset-1
+              .row
+                .large-4.columns
+                  #{boot.first_name} #{boot.last_name}
+                .large-4.columns
+                  = boot.email
+                .large-1.columns
+                  = boot.pairings.count
+              - if boot.pairings
+                - boot.pairings.each do |pair|
+                  .row
+                    .large-8.columns.large-centered
+                      = User.find(pair.mentor.id).full_name
+                      | 
+                      = User.find(pair.mentor.id).email
+                      = link_to "Notify!", "#", :data  => {:"reveal-id"  =>  "notify"}, class: "button success tiny radius"
+=render "layouts/notification_modal"
