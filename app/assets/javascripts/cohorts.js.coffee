@@ -1,3 +1,13 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
+$ ->
+  notify_pairs = ->
+    notify = $("#notify_pairs")
+    notify.click ->
+      $.ajax
+        type: "POST"
+        url: "/notify"
+        data: {
+          cohort_id: notify.data("cohort-id")
+        }
+        success: (json_data) ->
+        console.log "this shit returned success"
+  notify_pairs()

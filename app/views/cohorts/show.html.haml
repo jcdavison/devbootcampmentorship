@@ -14,7 +14,7 @@
           %a
             = @cohort.end_date
       .large-3.columns
-        = link_to "Notify All Pairs!", "#", class: "button tiny radius success margin-top"
+        = link_to "Notify All Pairs!", "javscript:void(0)", class: "button tiny radius success margin-top centered", id: "notify_pairs", :data => { :"cohort-id" => @cohort.id}
     .row
       = render "layouts/pairing_tool"
     .row
@@ -32,7 +32,7 @@
                 .large-4.columns
                   = mail_to mentor.email
                 .large-4.columns
-                  = mentor.pairings.count
+                  = mentor.mentees.count
         %h3.subheader
           %a
             Boots
@@ -47,6 +47,8 @@
                   = mail_to boot.email
                 .large-1.columns
                   = boot.pairings.count
+                  - unless boot.pairings
+                    %hr
               - if boot.pairings
                 .row
                   .large-8.columns.large-centered
@@ -55,4 +57,7 @@
                         %li.padded
                           mentor # #{n+1}
                           = User.find(pair.mentor.id).full_name
+                .row
+                  .large-12.columns
+                    %hr
 =render "layouts/notification_modal"

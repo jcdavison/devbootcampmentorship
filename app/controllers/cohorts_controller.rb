@@ -15,4 +15,8 @@ class CohortsController < ApplicationController
 
   end
 
+  def notify
+    Cohort.notify_all_pairs(params[:cohort_id])
+  end
+
 end
