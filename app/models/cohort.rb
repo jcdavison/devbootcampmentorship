@@ -5,6 +5,8 @@ class Cohort < ActiveRecord::Base
   has_many :mentors, :through => :commitments, :source => :user
   validates_presence_of :name, :start_date, :end_date
 
+  scope :active, where("end_date >= ?", Date.today)
+
   def pairings
     Pairing.for_cohort(self.id)
   end
@@ -24,10 +26,6 @@ class Cohort < ActiveRecord::Base
     self.end_date >= Date.today
   end
 
-  def self.all_active
-    Cohort.all.select {|cohort| cohort.active? }
-  end
-
   def available_mentorships
     boots.count - mentors.count
   end
@@ -40,6 +38,10 @@ class Cohort < ActiveRecord::Base
       mail = AdminMailer.notify_pair(mentor, mentee)
       mail.deliver
     end
+  end
+
+  def notify_pairs
+    pairings.each { |pairing| AdminMailer.notify_pair(pairing.mentor, pairing.mentee).deliver }
   end
 
   private

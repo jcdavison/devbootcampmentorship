@@ -1,5 +1,7 @@
 class CohortsController < ApplicationController
   before_filter :is_admin?
+  before_filter :find_cohort, only: [:notify]
+
   def show
     @cohort = Cohort.find(params[:id])
     @mentors = @cohort.mentors
@@ -16,7 +18,13 @@ class CohortsController < ApplicationController
   end
 
   def notify
-    Cohort.notify_all_pairs(params[:cohort_id])
+    @cohort.notify_pairs
+  end
+
+  private
+
+  def find_cohort
+    @cohort = Cohort.find_by_id(params[:cohort_id])
   end
 
 end
