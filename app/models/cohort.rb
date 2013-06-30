@@ -41,7 +41,7 @@ class Cohort < ActiveRecord::Base
   end
 
   def notify_pairs
-    pairings.each { |pairing| AdminMailer.notify_pair(pairing.mentor, pairing.mentee).deliver }
+    pairings.each { |pairing| AdminMailer.notify_pair(pairing.mentor, pairing.mentee, name).deliver }
   end
 
   private

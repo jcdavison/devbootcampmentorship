@@ -6,9 +6,11 @@ class AdminMailer < ActionMailer::Base
     mail(to: "brett.coding@gmail.com", subject: "Test Email!")
   end
 
-  def notify_pair(mentor, mentee)
+  def notify_pair(mentor, mentee, cohort_name)
     return unless mentor && mentee
-    to = "#{mentor.email}, #{mentee.email}"
-    mail(to: to, subject: "DevBootcamp Mentor Pairing!", cc: "john@devbootcamp.com, brett@devbootcamp.com")
+    @mentor = mentor
+    @mentee = mentee
+    to = "#{@mentor.email}, #{@mentee.email}"
+    mail(to: to, subject: "DevBootcamp Mentor Pairing re #{cohort_name}!", cc: "john@devbootcamp.com, brett@devbootcamp.com")
   end
 end

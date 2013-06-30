@@ -3,7 +3,7 @@ class CohortsController < ApplicationController
   before_filter :find_cohort, only: [:notify]
 
   def show
-    @cohort = Cohort.find(params[:id])
+    @cohort = Cohort.find_by_id(params[:id])
     @mentors = @cohort.mentors
     @boots = @cohort.boots
     @pairing = Pairing.new

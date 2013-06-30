@@ -1,2 +1,18 @@
-consider yourself notified
-= @content
+%h3
+  Congratulations #{@mentor.first_name} & #{@mentee.first_name} !
+%p
+  Consider yourselves paired!
+%h4
+  Mentor: 
+  = @mentor.first_name
+  = @mentor.last_name
+  = mail_to @mentor.email
+%h4
+  Mentor: 
+  = @mentee.first_name
+  = @mentee.last_name
+  = mail_to @mentee.email
+%p 
+  Use this email as an excuse to connect and do awesome things like pair programming, coffee sessions, product ideation session.  If you have any questions comments or concerns please contact John or Brett.  
+%h3
+  Happy Mentoring!
