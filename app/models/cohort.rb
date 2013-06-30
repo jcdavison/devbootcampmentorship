@@ -5,6 +5,10 @@ class Cohort < ActiveRecord::Base
   has_many :mentors, :through => :commitments, :source => :user
   validates_presence_of :name, :start_date, :end_date
 
+  def pairings
+    Pairing.for_cohort(self.id)
+  end
+
   def boots
     users
   end
@@ -33,7 +37,7 @@ class Cohort < ActiveRecord::Base
     cohort.pairings.each do |pairing|
       mentor = User.find_by_id(pairing.mentor_id)
       mentee = User.find_by_id(pairing.mentee_id)
-      mail = AdminMailer.notify_pair(mentor, mentee) 
+      mail = AdminMailer.notify_pair(mentor, mentee)
       mail.deliver
     end
   end
