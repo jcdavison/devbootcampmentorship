@@ -2,6 +2,7 @@ $ ->
   notify_pairs = ->
     notify = $("#notify_pairs")
     notify.click ->
+      console.log "notify clicked"
       $.ajax
         type: "POST"
         url: "/notify"
@@ -9,5 +10,5 @@ $ ->
           cohort_id: notify.data("cohort-id")
         }
         success: (json_data) ->
-        console.log "this shit returned success"
+        console.log "this returned success"
   notify_pairs()

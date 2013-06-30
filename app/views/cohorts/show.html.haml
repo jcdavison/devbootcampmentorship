@@ -49,6 +49,12 @@
                 .large-4.columns
                   Mentors: 
                   = boot.pairings.count
+          .row
+            .large-11.columns.large-offset-1
+              .row.padded
+                .large-6.columns.large-centered
+                  Interests: 
+                  = boot.interests
                   - unless boot.pairings
                     %hr
               - if boot.pairings
