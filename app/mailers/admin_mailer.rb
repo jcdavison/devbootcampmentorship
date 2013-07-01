@@ -7,7 +7,7 @@ class AdminMailer < ActionMailer::Base
   end
 
   def notify_pair(mentor, mentee, cohort_name)
-    return unless mentor && mentee
+    return unless mentor && mentee && cohort_name
     @mentor = mentor
     @mentee = mentee
     to = "#{@mentor.email}, #{@mentee.email}"

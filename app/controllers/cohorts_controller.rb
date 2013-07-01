@@ -1,4 +1,5 @@
 class CohortsController < ApplicationController
+  respond_to :html, :json
   before_filter :is_admin?
   before_filter :find_cohort, only: [:notify]
 
@@ -19,6 +20,11 @@ class CohortsController < ApplicationController
 
   def notify
     @cohort.notify_pairs
+    respond_with do |format|
+      format.json {
+        render :json => {message: "notify triggered"}
+      }
+    end
   end
 
   private

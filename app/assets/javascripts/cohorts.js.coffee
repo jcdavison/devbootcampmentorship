@@ -5,10 +5,11 @@ $ ->
       console.log "notify clicked"
       $.ajax
         type: "POST"
-        url: "/notify"
+        url: "/notify.json"
         data: {
           cohort_id: notify.data("cohort-id")
         }
-        success: (json_data) ->
-        console.log "this returned success"
+        success: (data) ->
+          console.log "success triggered"
+          console.log data
   notify_pairs()
