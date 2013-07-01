@@ -20,11 +20,7 @@ class CohortsController < ApplicationController
 
   def notify
     @cohort.notify_pairs
-    respond_with do |format|
-      format.json {
-        render :json => {message: "notify triggered"}
-      }
-    end
+    render nothing: true
   end
 
   private
