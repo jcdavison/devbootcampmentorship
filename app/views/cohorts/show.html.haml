@@ -14,7 +14,7 @@
           %a
             = @cohort.end_date
       .large-3.columns
-        = link_to "Notify All Pairs!", "javscript:void(0)", class: "button tiny radius success margin-top centered", id: "notify_pairs", :data => { :"cohort-id" => @cohort.id}
+        = link_to "Notify All Pairs!", notify_path(cohort_id: @cohort.id), class: "button tiny radius success margin-top centered", id: "notify_pairs", :data => { :"cohort-id" => @cohort.id}
     .row
       = render "layouts/pairing_tool"
     .row

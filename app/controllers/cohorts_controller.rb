@@ -20,7 +20,7 @@ class CohortsController < ApplicationController
 
   def notify
     @cohort.notify_pairs
-    render nothing: true
+    redirect_to :back
   end
 
   private
