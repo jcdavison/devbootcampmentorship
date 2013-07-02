@@ -14,4 +14,9 @@ class Pairing < ActiveRecord::Base
     pairing = Pairing.find_by_id(pairing_id)
     AdminMailer.notify_pair(pairing.mentor, pairing.mentee, name).deliver
   end
+
+  def self.notify_pair_destruction(pairing_id)
+    pairing = Pairing.find_by_id(pairing_id)
+    AdminMailer.notify_pair_destruction(pairing.mentor, pairing.mentee, name).deliver
+  end
 end
