@@ -11,7 +11,6 @@ class Pairing < ActiveRecord::Base
   }
 
   def self.notify_pair(pairing_id)
-    binding.pry
     pairing = Pairing.find_by_id(pairing_id)
     AdminMailer.notify_pair(pairing.mentor, pairing.mentee, name).deliver
   end
