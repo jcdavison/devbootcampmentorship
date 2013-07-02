@@ -66,6 +66,7 @@
                           mentor # #{n+1}
                           = User.find(pairing.mentor.id).full_name
                           = link_to "notify!", notify_path(pairing_id: pairing.id), class: "button tiny radius"
+                          = link_to "cancel pairing", pairing_path(pairing.id), :method =>  :delete, class: "button tiny radius"
                 .row
                   .large-12.columns
                     %hr

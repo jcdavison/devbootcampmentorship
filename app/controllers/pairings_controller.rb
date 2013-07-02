@@ -9,4 +9,10 @@ class PairingsController < ApplicationController
       redirect_to :back
     end
   end
+
+  def destroy
+    @pairing = Pairing.find_by_id(params[:id])
+    @pairing.destroy
+    redirect_to :back
+  end
 end
