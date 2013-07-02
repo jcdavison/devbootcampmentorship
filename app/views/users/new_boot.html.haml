@@ -16,7 +16,7 @@
             .row
               .columns.large-3.large-centered
                 #cohort_dropdown.top
-                  = collection_select :user, :cohort_id , Cohort.all, :id, :name,  {:prompt => "Pick a Cohort"}
+                  = collection_select :user, :cohort_id , Cohort.all, :id, :name,  {:prompt => "Your Original Cohort"}
                 %small#cohort_error.hidden.error.top
                   please select a cohort
         .row
