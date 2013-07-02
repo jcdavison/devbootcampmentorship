@@ -30,16 +30,6 @@ class Cohort < ActiveRecord::Base
     boots.count - mentors.count
   end
 
-  def self.notify_all_pairs(cohort_id)
-    cohort = Cohort.find_by_id(cohort_id)
-    cohort.pairings.each do |pairing|
-      mentor = User.find_by_id(pairing.mentor_id)
-      mentee = User.find_by_id(pairing.mentee_id)
-      mail = AdminMailer.notify_pair(mentor, mentee)
-      mail.deliver
-    end
-  end
-
   def notify_pairs
     pairings.each do |pairing| 
       AdminMailer.notify_pair(pairing.mentor, pairing.mentee, name).deliver

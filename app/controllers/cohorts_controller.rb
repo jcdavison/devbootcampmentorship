@@ -19,7 +19,12 @@ class CohortsController < ApplicationController
   end
 
   def notify
-    @cohort.notify_pairs
+    if params[:cohort_id]
+      @cohort = Cohort.find(params[:cohort_id])
+      @cohort.notify_pairs
+    elsif params[:pairing_id]
+      Pairing.notify_pair(params[:pairing_id])
+    end
     redirect_to :back
   end
 

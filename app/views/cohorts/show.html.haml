@@ -59,12 +59,13 @@
                     %hr
               - if boot.pairings
                 .row
-                  .large-8.columns.large-centered
+                  .large-7.columns.large-centered
                     .ul.no-bullet
-                      - boot.pairings.each_with_index do |pair, n|
+                      - boot.pairings.each_with_index do |pairing, n|
                         %li.padded
                           mentor # #{n+1}
-                          = User.find(pair.mentor.id).full_name
+                          = User.find(pairing.mentor.id).full_name
+                          = link_to "notify!", notify_path(pairing_id: pairing.id), class: "button tiny radius"
                 .row
                   .large-12.columns
                     %hr
