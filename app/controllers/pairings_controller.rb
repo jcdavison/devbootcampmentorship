@@ -12,7 +12,8 @@ class PairingsController < ApplicationController
 
   def destroy
     redirect_to :back unless params[:id]
-    Pairing.notify_pair_destruction(params[:id])
+    @pairing = Pairing.find_by_id(params[:id])
+    @pairing.notify_pair_destruction(@pairing.id)
     @pairing.destroy
     redirect_to :back
   end
