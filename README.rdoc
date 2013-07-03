@@ -5,3 +5,13 @@ thor dev:server (optional_port_number without parens, else it defaults to 3000)
 
 to push to heroku:
 thor deploy:prod
+
+FEATURE LIST
+
+## write some serious tests!
+## create message scope for all mentors, all boots, all mentors/boots in a cohort, all users (SF based)
+## Send welcome email to new people who sign up
+## build messaging functionality
+## create interface to quickly add mentors to cohorts
+## profile editing after auth with linkedin
+## tailor after new user page to reflect boot or mentor

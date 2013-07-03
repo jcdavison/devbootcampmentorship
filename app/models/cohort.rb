@@ -7,6 +7,10 @@ class Cohort < ActiveRecord::Base
 
   scope :active, where("end_date >= ?", Date.today)
 
+  def self.next
+    Cohort.where("start_date > ?", Time.now.to_date).limit(1).first
+  end
+
   def pairings
     Pairing.for_cohort(self.id)
   end

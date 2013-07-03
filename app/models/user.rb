@@ -68,6 +68,12 @@ class User < ActiveRecord::Base
     self.admin = true
   end
 
+  def assign_next_cohort
+    unless boot_status == "Boot"
+      commit_to_mentor!(Cohort.next)
+    end
+  end
+
   def self.process_wufoo_user(user)
     users = []
     errors = []
