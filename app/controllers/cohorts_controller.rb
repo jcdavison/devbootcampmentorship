@@ -35,7 +35,11 @@ class CohortsController < ApplicationController
     @cohort.set_end_date
     @cohort.save
     redirect_to :back
+  end
 
+  def destroy
+    Cohort.find_by_id(params[:id]).destroy
+    redirect_to :back
   end
 
   private
