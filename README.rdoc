@@ -10,12 +10,12 @@ FEATURE LIST
 
 !! assign mentors to cohorts via web interface
 
-## fix bugs related to id_admin? before filter for non logged in users
+## change location of remove mentors from cohorts
+## potential bug related to deleting commitment to cohort, what if has mentees?  
 ## update the thank you form to show dynamic cohort start event information
 ## create message scope for all mentors, all boots, all mentors/boots in a cohort, all users (SF based)
 ## Send welcome email to new people who sign up
 ## build messaging functionality
-## create interface to quickly add mentors to cohorts
 ## profile editing after auth with linkedin
 ## tailor after new user page to reflect boot or mentor
 ## write some serious tests!
