@@ -36,7 +36,7 @@ class User < ActiveRecord::Base
     self.pic = auth_hash[:info][:image]
     self.cohort_id = opts[:cohort][:cohort_id] unless opts[:cohort].nil?
     self.contact_email = self.email
- end
+  end
 
   def new_auth(auth_hash)
     self.authorizations.build( provider: auth_hash[:provider], uid: auth_hash[:uid], token: auth_hash[:credentials][:token], secret: auth_hash[:credentials][:secret])

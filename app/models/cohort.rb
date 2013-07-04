@@ -7,6 +7,10 @@ class Cohort < ActiveRecord::Base
 
   scope :active, where("end_date >= ?", Date.today)
 
+  def mentor_night
+    start_date + 1.day
+  end
+
   def self.next
     Cohort.where("start_date > ?", Time.now.to_date).limit(1).first
   end
@@ -27,7 +31,7 @@ class Cohort < ActiveRecord::Base
   end
 
   def active?
-    self.end_date >= Date.today
+    end_date >= Date.today
   end
 
   def available_mentorships
