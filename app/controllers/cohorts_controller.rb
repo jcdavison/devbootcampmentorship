@@ -1,6 +1,6 @@
 class CohortsController < ApplicationController
   respond_to :html, :json
-  before_filter :is_admin?
+  before_filter :protect_admin
   before_filter :find_cohort, only: [:notify]
 
   def show
@@ -12,6 +12,8 @@ class CohortsController < ApplicationController
 
   def index
     @cohorts = Cohort.all
+    @commitment = Commitment.new
+    @cohort = Cohort.new
   end
 
   def update
@@ -26,6 +28,14 @@ class CohortsController < ApplicationController
       Pairing.notify_pair(params[:pairing_id])
     end
     redirect_to :back
+  end
+
+  def create
+    @cohort = Cohort.new(params[:cohort])
+    @cohort.set_end_date
+    @cohort.save
+    redirect_to :back
+
   end
 
   private

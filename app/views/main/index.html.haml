@@ -9,5 +9,7 @@
           %h3.subheader.centered
             = link_to cohort.name, cohort_path(cohort.id) 
             boots: #{cohort.boots.count} mentors: #{cohort.mentors.count}
-
-
+.row
+  .large-3.columns.large-centered.panel
+    = link_to "cohorts", cohorts_path, class: "button small radius success"
+    = link_to "messaging", cohorts_path, class: "button small radius success"

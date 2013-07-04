@@ -1,5 +1,5 @@
 class PairingsController < ApplicationController
-  before_filter :is_admin?
+  before_filter :protect_admin
 
   def update
     @pairing = Pairing.new(params[:pairing])

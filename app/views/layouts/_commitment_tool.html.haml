@@ -1,0 +1,16 @@
+= form_for @commitment, method: :post, url: commitments_path do |commitment|
+  .large-2.columns
+    %h4.subheader.centered
+      Mentor
+  .large-3.columns
+    = collection_select :cohort, :id , @cohorts, :id, :name,  {:prompt => "Pick a Cohort"}, class: "margin-top"
+  .large-5.columns
+    .row.collapse
+      .large-3.columns
+        %span.prefix
+          Email
+      .large-9.columns
+        = commitment.text_field :email, placeholder: "somementorsemail@gmail.com", class: "validates_presence"
+  .large-2.columns
+    = commitment.submit 'Commit Mentor', class: "margin-top button tiny"
+

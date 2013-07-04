@@ -8,7 +8,9 @@ thor deploy:prod
 
 FEATURE LIST
 
-## write some serious tests!
+!! assign mentors to cohorts via web interface
+
+## fix bugs related to id_admin? before filter for non logged in users
 ## update the thank you form to show dynamic cohort start event information
 ## create message scope for all mentors, all boots, all mentors/boots in a cohort, all users (SF based)
 ## Send welcome email to new people who sign up
@@ -16,3 +18,4 @@ FEATURE LIST
 ## create interface to quickly add mentors to cohorts
 ## profile editing after auth with linkedin
 ## tailor after new user page to reflect boot or mentor
+## write some serious tests!

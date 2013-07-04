@@ -11,6 +11,11 @@ class Cohort < ActiveRecord::Base
     start_date + 1.day
   end
 
+  def set_end_date
+    binding.pry
+    self.end_date = self.start_date + 9.weeks
+  end
+
   def self.next
     Cohort.where("start_date > ?", Time.now.to_date).limit(1).first
   end

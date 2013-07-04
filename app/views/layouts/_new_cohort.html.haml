@@ -1,0 +1,19 @@
+= form_for @cohort, method: :post, url: cohorts_path do |cohort|
+  .large-4.columns
+    .row.collapse
+      .large-3.columns
+        %span.prefix
+          Name
+      .large-9.columns
+        = cohort.text_field :name, placeholder: "Funky Rhinos", class: "validates_presence"
+  .large-3.columns
+    .row.collapse
+      .large-3.columns
+        %span.prefix
+          Start
+      .large-9.columns
+        = cohort.text_field :start_date, placeholder: "2013-05-15", class: "validates_presence"
+  .large-3.columns
+  .large-2.columns
+    = cohort.submit 'New Cohort!', class: "margin-top button tiny"
+
