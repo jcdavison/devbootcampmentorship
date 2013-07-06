@@ -8,9 +8,7 @@ thor deploy:prod
 
 FEATURE LIST
 
-!! assign mentors to cohorts via web interface
 
-## change location of remove mentors from cohorts
 ## potential bug related to deleting commitment to cohort, what if has mentees?  
 ## update the thank you form to show dynamic cohort start event information
 ## create message scope for all mentors, all boots, all mentors/boots in a cohort, all users (SF based)

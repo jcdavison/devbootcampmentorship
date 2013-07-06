@@ -8,6 +8,8 @@ class CohortsController < ApplicationController
     @mentors = @cohort.mentors
     @boots = @cohort.boots
     @pairing = Pairing.new
+    @commitment = Commitment.new
+    @cohorts = Cohort.all
   end
 
   def index

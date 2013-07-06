@@ -10,7 +10,9 @@
     %ul.right
       - if logged_in? 
         %li
-          = link_to "Main", main_index_path 
+          = link_to "Cohorts", cohorts_path 
+        %li
+          = link_to "Messages", "#" 
         %li
           = link_to "Sign Out", "/sign_out"
       -# - unless logged_in?

@@ -8,24 +8,15 @@
       = render "layouts/commitment_tool"
     - @cohorts.each do |c|
       .row
-        .large-2.columns.subheader
+        .large-2.columns.subheader.centered
           = link_to c.name, cohort_path(c)
-        .large-2.columns.subheader
+        .large-2.columns.subheader.centered
           = c.start_date.to_date
-        .large-2.columns.subheader
+        .large-2.columns.subheader.centered
           = c.end_date.to_date
-        .large-3.columns.subheader
-          Mentors #{c.mentors.count}
-        .large-3.columns.subheader
-          Boots: #{c.boots.count}
-      - if c.mentors
-        .row
-          .large-10.columns
-            %ul.inline
-              %li.centered 
-                - c.mentors.each do |m|
-                  = m.full_name
-                  = link_to "X", commitment_path(m.id), method: :delete
+        .large-3.columns.subheader.centered
+          M #{c.mentors.count} B #{c.boots.count} 
+        .large-3.columns.subheader.centered
   .large-10.columns.large-centered.panel
     .row
       = render "layouts/new_cohort"

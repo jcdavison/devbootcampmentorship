@@ -31,9 +31,11 @@
                   #{mentor.first_name} #{mentor.last_name}
                 .large-4.columns
                   = mail_to mentor.email
-                .large-4.columns
+                .large-3.columns
                   Mentees:
                   = mentor.mentees.count
+                .large-1.columns
+                  = link_to "X", commitment_path(mentor.id), method: :delete
         %h3.subheader
           %a
             Boots
@@ -70,4 +72,7 @@
                 .row
                   .large-12.columns
                     %hr
+  .large-10.columns.large-centered.panel
+    .row
+      = render "layouts/commitment_tool"
 =render "layouts/notification_modal"

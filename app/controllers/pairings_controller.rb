@@ -1,13 +1,16 @@
 class PairingsController < ApplicationController
   before_filter :protect_admin
 
-  def update
+  def create
     @pairing = Pairing.new(params[:pairing])
     if @pairing.save
-      redirect_to cohort_path(params[:id])
+      redirect_to :back 
     else
       redirect_to :back
     end
+  end
+
+  def update
   end
 
   def destroy

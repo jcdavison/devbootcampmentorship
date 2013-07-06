@@ -12,7 +12,6 @@ class Cohort < ActiveRecord::Base
   end
 
   def set_end_date
-    binding.pry
     self.end_date = self.start_date + 9.weeks
   end
 
