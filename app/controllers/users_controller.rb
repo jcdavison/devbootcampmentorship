@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user.location = params[:location]
     if @user.save
       @user.assign_next_cohort
-      AdminMailer.welcome(@user)
+      AdminMailer.welcome(@user).deliver
       redirect_to thank_you_path(id: @user.id)
     else
       redirect_to :back
