@@ -1,7 +1,7 @@
 class AdminMailer < ActionMailer::Base
   default from: "admin@devbootcampmentorship.com"
   layout "mailer"
-  CC_LINE = "john@devbootcamp.com, brett@devbootcamp.com, sherif@devbootcamp.com"
+  CC_LINE = "john@devbootcamp.com, brett@devbootcamp.com, sherif@devbootcamp.com, stephanie@devbootcamp.com"
 
   def test_email
     mail(to: "brett.coding@gmail.com", subject: "Test Email!")
