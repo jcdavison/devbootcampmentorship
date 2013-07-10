@@ -9,7 +9,6 @@ thor deploy:prod
 FEATURE LIST
 
 ## auto send email to welcome people to the community letting them know the next mentor night.
-## fix the mentor night url on eventbrite to reflect a recurring event.
 ## create message scope for all mentors, all boots, all mentors/boots in a cohort, all users (SF based)
 ## auto notify me and brett when anyone new signs up
 ## build messaging functionality
