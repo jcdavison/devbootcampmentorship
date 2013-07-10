@@ -8,13 +8,10 @@ thor deploy:prod
 
 FEATURE LIST
 
-## auto send email to welcome people to the community letting them know the next mentor night.
-## create message scope for all mentors, all boots, all mentors/boots in a cohort, all users (SF based)
-## auto notify me and brett when anyone new signs up
 ## build messaging functionality
+## create message scope for all mentors, all boots, all mentors/boots in a cohort, all users (SF based)
 ## profile editing after auth with linkedin
 ## potential bug related to deleting commitment to cohort, what if has mentees?  
-## update the thank you form to show dynamic cohort start event information
 ## tailor after new user page to reflect boot or mentor
 ## write some serious tests!
 ## setup twilio to send sms updates to people
