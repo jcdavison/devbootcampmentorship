@@ -1,0 +1,24 @@
+.row
+  .large-10.columns.large-centered
+    %h3.subheader
+      %a
+        Create A New Message
+  = form_for @message do |message|
+    .large-10.columns.large-centered.panel
+      .row
+        .large-3.columns
+          %h1.centered
+            to:
+        .large-9.columns
+          to content
+      .row
+        .large-3.columns
+          %h2.centered
+            content:
+        .large-9.columns
+          = message.text_area :content, placeholder: "New Message"
+      .row
+        .large-3.columns.large-offset-9
+          %div{ class: "button radius success" }
+            send message
+  
