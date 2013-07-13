@@ -8,7 +8,6 @@ class AdminMailer < ActionMailer::Base
   end
 
   def welcome(user)
-    binding.pry
     @user = user
     @cohort = Cohort.next
     return unless @user && @cohort
