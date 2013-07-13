@@ -1,24 +1,29 @@
 .row
-  .large-10.columns.large-centered
+  .large-6.columns.large-offset-6
     %h3.subheader
       %a
         Create A New Message
-  = form_for @message do |message|
-    .large-10.columns.large-centered.panel
+= form_tag(messages_path, method: :post) do  
+  .row
+    .large-10.columns.panel.radius
       .row
         .large-3.columns
-          %h1.centered
+          %h4.centered
             to:
         .large-9.columns
-          to content
+          = text_field_tag :to
       .row
         .large-3.columns
-          %h2.centered
+          %h4.centered
+            subject:
+        .large-9.columns
+          = text_field_tag :subject
+      .row
+        .large-3.columns
+          %h4.centered
             content:
         .large-9.columns
-          = message.text_area :content, placeholder: "New Message"
+          = text_area_tag :content
       .row
         .large-3.columns.large-offset-9
-          %div{ class: "button radius success" }
-            send message
-  
+          = submit_tag "Send Message", class: "button radius success"

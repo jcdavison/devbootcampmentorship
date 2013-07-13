@@ -3,15 +3,18 @@ class AdminMailer < ActionMailer::Base
   layout "mailer"
   CC_LINE = "john@devbootcamp.com, brett@devbootcamp.com, sherif@devbootcamp.com, stephanie@devbootcamp.com"
 
-  def test_email
-    mail(to: "brett.coding@gmail.com", subject: "Test Email!")
+  def message(to, subject, content)
+    mail(to: to, subject: subject, content: content)
   end
 
   def welcome(user)
+    binding.pry
     @user = user
     @cohort = Cohort.next
     return unless @user && @cohort
-    mail(to: @user.email, subject: "Welcome to the Dev Bootcamp Mentorship community", cc: CC_LINE )
+    mail(to: @user.email, 
+         subject: "Welcome to the Dev Bootcamp Mentorship community",
+         cc: CC_LINE)
   end
 
   def notify_pair(mentor, mentee, cohort_name)
@@ -28,5 +31,11 @@ class AdminMailer < ActionMailer::Base
     @mentee = mentee
     to = "#{@mentor.email}, #{@mentee.email}"
     mail(to: to, subject: "DevBootcamp Mentor Pairing, Its a Break Up..", cc: CC_LINE)
+  end
+
+  private
+
+  def emails(users)
+    users.map(&:email)
   end
 end

@@ -17,6 +17,21 @@ class User < ActiveRecord::Base
   def self.recent
     User.where(created_at: (Time.now - 14.days)..Time.now)
   end
+
+  def self.all_mentors
+    User.all.select {|user| user.avail_mentor? }
+  end
+
+  def self.all_current_boots
+    User.all.select {|user| user.boot_status == "Boot" }
+  end
+
+  def self.all_boots
+    User.all.select do |user|
+      user.boot_status == "Boot" ||
+        user.boot_status == "alumni"
+    end
+  end
   def self.recent_boot
     User.recent.select {|u| u.boot_status == ("Alumni" || "Boot") }
   end

@@ -9,7 +9,7 @@ thor deploy:prod
 FEATURE LIST
 
 ## build messaging functionality
-## create message scope for all mentors, all boots, all mentors/boots in a cohort, all users (SF based)
+## ensure that .emails in admin mailer returns a string of emails addresses, not just an array
 ## profile editing after auth with linkedin
 ## potential bug related to deleting commitment to cohort, what if has mentees?  
 ## tailor after new user page to reflect boot or mentor

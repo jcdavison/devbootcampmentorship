@@ -35,7 +35,7 @@ class Cohort < ActiveRecord::Base
   end
 
   def active?
-    end_date >= Date.today
+    end_date >= Date.today && start_date <= Date.today
   end
 
   def available_mentorships
