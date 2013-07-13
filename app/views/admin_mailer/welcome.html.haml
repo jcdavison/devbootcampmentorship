@@ -1,7 +1,7 @@
 %h3
   Greetings #{@user.first_name.capitalize}, thanks for joining the community.
 %p 
-  Since the next Cohort, the #{@cohort.name} starts on #{@cohort.start_date.strftime("%B #{@cohort.start_date.day.ordinalize}")}, we will be hosting an informal meet and greet for Mentors and Mentees to connect. For more information, 
+  We will be hosting an informal meet and greet with Dev Bootcamp's Newest Cohort, the #{@cohort.name}, on the night of the  #{Cohort.next.mentor_night.day.ordinalize}.  Come meet new Boots, have pizza and checkout Dev Bootcamp.  More information;
 %h4
   = link_to "http://devbootcampmentorship.eventbrite.com/", "http://devbootcampmentorship.eventbrite.com/"
 %p
