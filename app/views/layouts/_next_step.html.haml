@@ -1,10 +1,7 @@
 .row
-  .large-10.columns.large-centered.panel
+  .large-8.columns.large-centered.panel
     %h4.subheader.centered
-      %a
-        The next cohort starts on #{Cohort.next.start_date.strftime("%B #{Cohort.next.start_date.day.ordinalize}")}.
-    %h4.subheader.centered
-      There will be an informal meet and greet on the night of the #{Cohort.next.mentor_night.day.ordinalize}.
+      There will be an informal meet and greet for the start of the #{Cohort.next.name} Cohort on the night of the #{Cohort.next.mentor_night.day.ordinalize}.
     %h4.subheader.centered
       For More Info, 
       = link_to "http://devbootcampmentorship.eventbrite.com/", "http://devbootcampmentorship.eventbrite.com/"
