@@ -3,9 +3,9 @@ class AdminMailer < ActionMailer::Base
   layout "mailer"
   CC_LINE = "john@devbootcamp.com, brett@devbootcamp.com, sherif@devbootcamp.com, stephanie@devbootcamp.com"
 
-  def message(to, subject, content)
-    mail(to: to, subject: subject, content: content)
-  end
+  # def message(to, subject, content)
+  #   mail(to: to, subject: subject, content: content)
+  # end
 
   def welcome(user)
     @user = user
