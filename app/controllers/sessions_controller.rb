@@ -9,11 +9,11 @@ class SessionsController < ApplicationController
     @user = User.find_by_email auth_hash[:info][:email]
     if @authorized_user
       set_session_id @authorized_user
-      redirect_to cohorts_path
+      redirect_to :back
     elsif @user
       Authorization.create_auth(auth_hash, @user.id)
       set_session_id @user
-      redirect_to cohorts_path
+      redirect_to :back
     else
       redirect_to '/sign_up'
     end
