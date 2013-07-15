@@ -23,9 +23,9 @@ class ApplicationController < ActionController::Base
   end
 
   def protect_admin
-    # unless is_admin?
-    #   redirect_to root_path
-    # end
+    unless is_admin?
+      redirect_to root_path
+    end
   end
 
   helper_method :logged_in?, :current_user, :admin?, :protect_admin
