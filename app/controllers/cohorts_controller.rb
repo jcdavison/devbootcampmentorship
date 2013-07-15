@@ -22,6 +22,10 @@ class CohortsController < ApplicationController
 
   end
 
+  def message_cohort
+    #message all mentors, all mentees, all members
+  end
+
   def notify
     if params[:cohort_id]
       @cohort = Cohort.find(params[:cohort_id])

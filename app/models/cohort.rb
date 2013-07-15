@@ -16,7 +16,7 @@ class Cohort < ActiveRecord::Base
   end
 
   def self.next
-    Cohort.where("start_date > ?", Time.now.to_date).limit(1).first
+    Cohort.where("start_date > ?", Time.now.to_date - 4.days).limit(1).first
   end
 
   def pairings

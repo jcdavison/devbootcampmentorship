@@ -5,6 +5,7 @@ BootBook::Application.routes.draw do
   match '/thank_you', to: 'mentors#thanks'
   match '/mentor_sign_up', to: 'users#new_mentor'
   match '/notify', via: :get, to: 'cohorts#notify'
+  match '/message_cohort', via: :post, to: 'cohorts#notify'
   match '/boot_sign_up', to: 'users#new_boot'
   resources :users, :cohorts, :pairings, :commitments, :messages
   root :to => "users#index"

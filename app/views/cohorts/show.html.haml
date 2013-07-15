@@ -1,7 +1,7 @@
 .row
   .large-10.columns.large-centered.panel
     .row
-      .large-9.columns
+      .large-6.columns
         %h3.subheader.centered.inline
           %a
             =@cohort.name.capitalize
@@ -13,8 +13,11 @@
           graduation: 
           %a
             = @cohort.end_date
-      .large-3.columns
+      .large-6.columns
         = link_to "Notify All Pairs!", notify_path(cohort_id: @cohort.id), class: "button tiny radius success margin-top centered", id: "notify_pairs", :data => { :"cohort-id" => @cohort.id}
+        = form_for :message, method: :post, url: message_cohort_path do |message|
+          = select "message", "list_name", User::COHORT_MESSAGE_LIST 
+          = message.submit "message cohort", class: "button tiny success radius"
     .row
       = render "layouts/pairing_tool"
     .row

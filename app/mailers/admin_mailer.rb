@@ -3,9 +3,11 @@ class AdminMailer < ActionMailer::Base
   layout "mailer"
   CC_LINE = "john@devbootcamp.com, brett@devbootcamp.com, sherif@devbootcamp.com, stephanie@devbootcamp.com"
 
-  # def message(to, subject, content)
-  #   mail(to: to, subject: subject, content: content)
-  # end
+  def send_message(message, user)
+    @content = message[:content]
+    @user = user
+    mail(to: @user.email, subject: message[:subject])
+  end
 
   def welcome(user)
     @user = user
@@ -32,9 +34,4 @@ class AdminMailer < ActionMailer::Base
     mail(to: to, subject: "DevBootcamp Mentor Pairing, Its a Break Up..", cc: CC_LINE)
   end
 
-  private
-
-  def emails(users)
-    users.map(&:email)
-  end
 end

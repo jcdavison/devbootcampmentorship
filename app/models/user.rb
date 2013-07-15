@@ -14,30 +14,52 @@ class User < ActiveRecord::Base
 
   default_scope where(location: "San Francisco")
 
+  MESSAGE_LIST = ["all_mentors", "all_current_boots", "all_alum_and_boots", "all_users"]
+
+  COHORT_MESSAGE_LIST = ["all_mentors", "all_mentees", "all_members"]
+  def self.send_messages(message)
+    list = message[:list_name]
+    users = User.all_mentors if list  == MESSAGE_LIST[0]
+    users = User.all_current_boots if list == MESSAGE_LIST[1]
+    users = User.all_alum_and_boots if list == MESSAGE_LIST[2]
+    users = User.all_users if list == MESSAGE_LIST[3]
+    emails = User.emails(users)
+    return unless emails
+    emails.each do |email|
+      user = User.find_by_email(email)
+      mail = AdminMailer.send_message(message, user)
+      mail.deliver if mail
+    end
+  end
+
   def self.recent
-    User.where(created_at: (Time.now - 14.days)..Time.now)
+    where(created_at: (Time.now - 14.days)..Time.now)
   end
 
   def self.all_mentors
-    User.all.select {|user| user.avail_mentor? }
+    all.select {|user| user.avail_mentor? }
+  end
+  
+  def self.all_users
+    all
   end
 
   def self.all_current_boots
-    User.all.select {|user| user.boot_status == "Boot" }
+    all.select {|user| user.boot_status == "Boot" }
   end
 
-  def self.all_boots
-    User.all.select do |user|
+  def self.all_alum_and_boots
+    all.select do |user|
       user.boot_status == "Boot" ||
         user.boot_status == "alumni"
     end
   end
   def self.recent_boot
-    User.recent.select {|u| u.boot_status == ("Alumni" || "Boot") }
+    recent.select {|u| u.boot_status == ("Alumni" || "Boot") }
   end
 
   def self.recent_mentors
-    User.recent.select {|u| u.avail_mentor? }
+    recent.select {|u| u.avail_mentor? }
   end
 
   def full_name
@@ -103,7 +125,7 @@ class User < ActiveRecord::Base
   end
 
   def self.email_taken?(user)
-    User.find_by_email(user.email).present?
+    find_by_email(user.email).present?
   end
 
   def self.wufoo_opts(user)
@@ -118,5 +140,9 @@ class User < ActiveRecord::Base
     opts[:passions] = user["Field535"] unless user["Field535"].blank?
     opts[:interests] = user["Field208"] unless user["Field208"].blank?
     opts
+  end
+
+  def self.emails(users)
+    users.map(&:email)
   end
 end
