@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
     emails = User.emails(users)
     return unless emails
     emails.each do |email|
+      binding.pry
       user = User.find_by_email(email)
       mail = AdminMailer.send_message(message, user)
       mail.deliver if mail

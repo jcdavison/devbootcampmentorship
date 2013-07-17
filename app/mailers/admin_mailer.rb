@@ -7,7 +7,7 @@ class AdminMailer < ActionMailer::Base
   def send_message(message, user)
     @content = message[:content]
     @user = user
-    mail(to: @user.email, subject: message[:subject], cc: CC_LITE)
+    mail(to: @user.email, subject: message[:subject], cc: CC_LITE, reply_to: CC_LITE)
   end
 
   def welcome(user)
@@ -16,7 +16,7 @@ class AdminMailer < ActionMailer::Base
     return unless @user && @cohort
     mail(to: @user.email, 
          subject: "Welcome to the Dev Bootcamp Mentorship community",
-         cc: CC_LINE)
+         cc: CC_LINE, reply_to: CC_LITE)
   end
 
   def notify_pair(mentor, mentee, cohort_name)
@@ -24,7 +24,7 @@ class AdminMailer < ActionMailer::Base
     @mentor = mentor
     @mentee = mentee
     to = "#{@mentor.email}, #{@mentee.email}"
-    mail(to: to, subject: "DevBootcamp Mentor Pairing re #{cohort_name}!", cc: CC_LINE)
+    mail(to: to, subject: "DevBootcamp Mentor Pairing re #{cohort_name}!", cc: CC_LINE, reply_to: CC_LITE)
   end
 
   def notify_pair_destruction(mentor, mentee)
@@ -32,7 +32,7 @@ class AdminMailer < ActionMailer::Base
     @mentor = mentor
     @mentee = mentee
     to = "#{@mentor.email}, #{@mentee.email}"
-    mail(to: to, subject: "DevBootcamp Mentor Pairing, Its a Break Up..", cc: CC_LINE)
+    mail(to: to, subject: "DevBootcamp Mentor Pairing, Its a Break Up..", cc: CC_LINE, reply_to: CC_LITE)
   end
 
 end
