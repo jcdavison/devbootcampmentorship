@@ -6,17 +6,19 @@
   .large-10.columns.large-centered.panel
     .row
       = render "layouts/commitment_tool"
-    - @cohorts.each do |c|
+    - @cohorts.each do |cohort|
       .row
         .large-2.columns.subheader.centered
-          = link_to c.name, cohort_path(c)
+          = link_to cohort.name, cohort_path(cohort)
         .large-2.columns.subheader.centered
-          = c.start_date.to_date
+          = cohort.start_date.to_date
         .large-2.columns.subheader.centered
-          = c.end_date.to_date
+          = cohort.end_date.to_date
         .large-3.columns.subheader.centered
-          M #{c.mentors.count} B #{c.boots.count} 
+          M #{cohort.mentors.count} B #{cohort.boots.count} 
         .large-3.columns.subheader.centered
+          = cohort.stage.ordinalize
+          Week
   .large-10.columns.large-centered.panel
     .row
       = render "layouts/new_cohort"

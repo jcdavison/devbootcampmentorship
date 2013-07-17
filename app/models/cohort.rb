@@ -4,11 +4,16 @@ class Cohort < ActiveRecord::Base
   has_many :commitments
   has_many :mentors, :through => :commitments, :source => :user
   validates_presence_of :name, :start_date, :end_date
+  DBC_LENGTH = 9
 
   scope :active, where("end_date >= ?", Date.today)
 
   def mentor_night
     start_date + 1.day
+  end
+
+  def stage
+    DBC_LENGTH - (end_date.cweek - Time.now.to_date.cweek)
   end
 
   def set_end_date
