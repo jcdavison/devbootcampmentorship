@@ -13,7 +13,13 @@ class Cohort < ActiveRecord::Base
   end
 
   def stage
-    DBC_LENGTH - (end_date.cweek - Time.now.to_date.cweek)
+    stage = DBC_LENGTH - (end_date.cweek - Time.now.to_date.cweek)
+    if stage > 9
+      stage = 9
+    elsif stage < 0
+      stage = 0
+    end
+    stage
   end
 
   def set_end_date
