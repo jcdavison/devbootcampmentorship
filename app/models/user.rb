@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   has_many :commitments
   has_many :cohorts, :through => :commitments
 
-  default_scope where(location: "San Francisco")
+  default_scope where(location: "San Francisco", deleted: nil)
 
   MESSAGE_LIST = ["all_mentors", "all_current_boots", "all_alum_and_boots", "all_users"]
 
