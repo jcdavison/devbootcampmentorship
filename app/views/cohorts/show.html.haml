@@ -39,6 +39,10 @@
                   = mentor.mentees.count
                 .large-1.columns
                   = link_to "X", commitment_path(mentor.id), method: :delete
+          .row.padded
+            .large-6.columns.large-centered
+              Interests: 
+              = mentor.interests
         %h3.subheader
           %a
             Boots
