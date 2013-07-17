@@ -32,6 +32,13 @@ class User < ActiveRecord::Base
     end
   end
 
+  def admin?
+    if admin == true
+      true
+    else
+      false
+    end
+  end
   def self.recent
     where(created_at: (Time.now - 14.days)..Time.now)
   end
