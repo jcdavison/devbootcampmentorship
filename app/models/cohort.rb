@@ -59,6 +59,20 @@ class Cohort < ActiveRecord::Base
     end
   end
 
+  def send_messages(message)
+    users = mentors if message[:list_name] == "all_mentors"
+    users = boots if message[:list_name] == "all_mentees"
+    users = mentors + boots if message[:list_name] == "all_members"
+
+    emails = User.emails(users)
+    return unless emails
+    emails.each do |email|
+      user = User.find_by_email(email)
+      mail = AdminMailer.send_message(message, user)
+      mail.deliver if mail
+    end
+  end
+
   private
 
   def find_mentors

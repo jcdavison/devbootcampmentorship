@@ -6,7 +6,12 @@ class MessagesController < ApplicationController
 
   def create
     message = params[:message]
-    User.send_messages(message)
+    if params[:message_cohort]
+      @cohort = Cohort.find(params[:cohort_id])
+      @cohort.send_messages(message)
+    else
+      User.send_messages(message)
+    end
     redirect_to :back
   end
 

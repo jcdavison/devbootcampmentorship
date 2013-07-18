@@ -15,8 +15,8 @@ class User < ActiveRecord::Base
   default_scope where(location: "San Francisco", deleted: nil)
 
   MESSAGE_LIST = ["all_mentors", "all_current_boots", "all_alum_and_boots", "all_users"]
+  COHORT_LIST = ["all_mentors", "all_mentees", "all_members"]
 
-  COHORT_MESSAGE_LIST = ["all_mentors", "all_mentees", "all_members"]
   def self.send_messages(message)
     list = message[:list_name]
     users = User.all_mentors if list  == MESSAGE_LIST[0]

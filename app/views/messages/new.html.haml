@@ -3,28 +3,4 @@
     %h3.subheader
       %a
         Create A New Message
--# = form_for( :message, messages_path, method: :post) do  
-= form_for :message, method: :post, url: messages_path do |message|
-  .row
-    .large-10.columns.panel.radius
-      .row
-        .large-3.columns
-          %h4.centered
-            to:
-        .large-9.columns
-          = select "message", "list_name", User::MESSAGE_LIST 
-      .row
-        .large-3.columns
-          %h4.centered
-            subject:
-        .large-9.columns
-          = message.text_field :subject
-      .row
-        .large-3.columns
-          %h4.centered
-            content:
-        .large-9.columns
-          = message.text_area :content
-      .row
-        .large-3.columns.large-offset-9
-          = submit_tag "Send Message", class: "button radius success"
+= render "layouts/message"
