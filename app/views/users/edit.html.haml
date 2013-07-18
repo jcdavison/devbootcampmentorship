@@ -1,0 +1,11 @@
+= form_for @user, html: { id: "new_user_form" } do |u|
+  .row
+    .large-10.columns.large-centered
+      %fieldset
+        %legend
+          %h3.subheader
+            You, In a Nut Shell !
+        = render partial: 'layouts/userinfo', locals: { u: u }
+  .row
+    .large-3.columns.large-centered
+      = u.submit "Update Your Info!", class: "success button expand margin-top"

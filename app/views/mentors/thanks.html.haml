@@ -1,14 +1,17 @@
 .row
-  .large-11.columns.large-centered
+  .large-12.columns.large-centered
     %h2.subheader.centered
       %a
         #{@user.first_name.capitalize}, you are the #{User.count.ordinalize} member of our community!
+.row
+  .large-11.columns.large-centered
     %h3.subheader.centered
       Thank You For Joining Us On The Journey! 
+= render "layouts/next_step"
+.row
+  .large-11.columns.large-centered
     %h4.subheader.centered
       %a
-        your email :: 
-        = @user.email.capitalize
+        to edit your profile => 
         - unless current_user
           = link_to "Connect Via Linkedin!", "/auth/linkedin?user_id=#{@user.id}", class: "button rounded success tiny"
-= render "layouts/next_step"

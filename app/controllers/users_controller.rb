@@ -24,6 +24,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find_by_id(params[:id])
+  end
+
+  def update
+    @user = User.find_by_id(params[:id])
+    @user.update_attributes(params[:user])
+    redirect_to edit_user_path(@user)
+  end
   protected
 
   def auth_hash

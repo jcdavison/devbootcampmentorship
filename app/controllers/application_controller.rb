@@ -28,6 +28,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  helper_method :logged_in?, :current_user, :admin?, :protect_admin
+  helper_method :logged_in?, :current_user, :is_admin?, :protect_admin
 
 end
