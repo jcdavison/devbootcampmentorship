@@ -8,6 +8,7 @@ thor deploy:prod
 
 FEATURE LIST
 
+## fix token/secret bug on Authorizations, ie, they aren't being stored correctly
 ## set the system to handle chicago based users as well
 ## tailor communications and user facing views to reflect boot or mentor
 ## ensure that if user has a diff email than linkedin auth, system handle correctly
