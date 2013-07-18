@@ -8,6 +8,7 @@ thor deploy:prod
 
 FEATURE LIST
 
+## ensure that if user has a diff email than linkedin auth, system handle correctly
 ## profile editing after auth with linkedin
 ## potential bug related to deleting commitment to cohort, what if has mentees?  
 ## tailor after new user page to reflect boot or mentor
