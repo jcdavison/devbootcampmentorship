@@ -1,5 +1,5 @@
 class Authorization < ActiveRecord::Base
-  attr_accessible :provider, :uid, :user_id, :token, :secret
+  attr_accessible :provider, :uid, :user_id, :token, :secret, :email
   belongs_to :user
 
   def update_info(auth_hash, role)
