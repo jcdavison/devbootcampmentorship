@@ -7,7 +7,7 @@ class AdminMailer < ActionMailer::Base
   def send_message(message, user)
     @content = message[:content]
     @user = user
-    mail(to: @user.email, subject: message[:subject], cc: CC_LITE, reply_to: CC_LITE)
+    mail(to: @user.email, subject: message[:subject], cc: CC_LINE, reply_to: CC_LITE)
   end
 
   def welcome(user)
