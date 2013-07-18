@@ -8,9 +8,10 @@ thor deploy:prod
 
 FEATURE LIST
 
+## set the system to handle chicago based users as well
+## tailor communications and user facing views to reflect boot or mentor
 ## ensure that if user has a diff email than linkedin auth, system handle correctly
 ## profile editing after auth with linkedin
 ## potential bug related to deleting commitment to cohort, what if has mentees?  
-## tailor after new user page to reflect boot or mentor
 ## write some serious tests!
 ## setup twilio to send sms updates to people

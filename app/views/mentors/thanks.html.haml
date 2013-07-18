@@ -10,5 +10,5 @@
         your email :: 
         = @user.email.capitalize
         - unless current_user
-          = link_to "Connect Via Linkedin!", "/auth/linkedin", class: "button rounded success tiny"
+          = link_to "Connect Via Linkedin!", "/auth/linkedin?user_id=#{@user.id}", class: "button rounded success tiny"
 = render "layouts/next_step"

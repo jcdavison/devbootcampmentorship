@@ -6,16 +6,20 @@ class SessionsController < ApplicationController
   def create
     @authorization = Authorization.find_by_uid(auth_hash[:uid])
     @authorized_user = @authorization.user if @authorization
-    @user = User.find_by_email auth_hash[:info][:email]
+
+    user_id = params[:user_id]
+    email = auth_hash[:info][:email]
+    @user = User.find_by_id(user_id) || User.find_by_email(email)
+
     if @authorized_user
       set_session_id @authorized_user
       route_user(@authorized_user)
     elsif @user
       Authorization.create_auth(auth_hash, @user.id)
-      set_session_id @user
+      set_session_id(@user)
       route_user(@user)
     else
-      redirect_to '/sign_up'
+      redirect_to root_path
     end
   end
 
