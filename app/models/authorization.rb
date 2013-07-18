@@ -12,6 +12,7 @@ class Authorization < ActiveRecord::Base
       provider: auth_hash[:provider],
       uid: auth_hash[:uid],
       user_id: user_id,
+      email: auth_hash[:info][:email],
       token: auth_hash[:token],
       token: auth_hash[:secret])
   end
