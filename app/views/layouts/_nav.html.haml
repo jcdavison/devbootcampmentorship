@@ -1,18 +1,18 @@
 %nav.top-bar
   %ul.title-area
     %li.name
-      %h1 
+      %h1
         = link_to "Dev Bootcamp Mentors", root_path
     %li.toggle-topbar.menu-icon
       %a{:href => "#"}
         menu
   %section.top-bar-section
     %ul.right
-      - if is_admin?
+      - if is_admin? || is_leader?
         %li
-          = link_to "Cohorts", cohorts_path 
+          = link_to "Cohorts", cohorts_path
         %li
-          = link_to "Messages", new_message_path 
+          = link_to "Messages", new_message_path
         %li
           = link_to "Edit Profile", edit_user_path(current_user)
       - if logged_in?

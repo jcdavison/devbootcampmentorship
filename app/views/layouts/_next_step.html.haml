@@ -1,9 +1,9 @@
 .row
   .large-8.columns.large-centered.panel
     %h4.subheader.centered
-      There will be an informal meet and greet for the start of the #{Cohort.next.name} Cohort on the night of the #{Cohort.next.mentor_night.day.ordinalize}.
+      There will be an informal meet and greet for the start of the #{Cohort.next_local(user).name} Cohort on the night of the #{Cohort.next_local(user).mentor_night.day.ordinalize}.
     %h4.subheader.centered
-      For More Info, 
+      For More Info,
       = link_to "http://devbootcampmentorship.eventbrite.com/", "http://devbootcampmentorship.eventbrite.com/"
     %h5.subheader.centered
-      You will be connected with 1 or 2 boots (via email) on or about the #{Cohort.next.mentor_night.day.ordinalize}.
+      You will be connected with 1 or 2 boots (via email) on or about the #{Cohort.next_local(user).mentor_night.day.ordinalize}.

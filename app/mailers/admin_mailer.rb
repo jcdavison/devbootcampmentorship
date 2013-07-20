@@ -12,9 +12,9 @@ class AdminMailer < ActionMailer::Base
 
   def welcome(user)
     @user = user
-    @cohort = Cohort.next
+    @cohort = Cohort.next_local(user)
     return unless @user && @cohort
-    mail(to: @user.email, 
+    mail(to: @user.email,
          subject: "Welcome to the Dev Bootcamp Mentorship community",
          cc: CC_LINE, reply_to: CC_LITE)
   end

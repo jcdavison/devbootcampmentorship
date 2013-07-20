@@ -33,12 +33,13 @@ class User < ActiveRecord::Base
   end
 
   def admin?
-    if admin == true
-      true
-    else
-      false
-    end
+    role == "admin"
   end
+
+  def leader?
+    role == "leader"
+  end
+
   def self.recent
     where(created_at: (Time.now - 14.days)..Time.now)
   end
@@ -112,9 +113,10 @@ class User < ActiveRecord::Base
     self.admin = true
   end
 
-  def assign_next_cohort
+  def assign_next_cohort(user)
     unless boot_status == "Boot"
-      commit_to_mentor!(Cohort.next)
+      c = Cohort.next_local(user)
+      commit_to_mentor!(c) if c
     end
   end
 

@@ -1,10 +1,10 @@
 class PairingsController < ApplicationController
-  before_filter :protect_admin
+  load_and_authorize_resource
 
   def create
     @pairing = Pairing.new(params[:pairing])
     if @pairing.save
-      redirect_to :back 
+      redirect_to :back
     else
       redirect_to :back
     end

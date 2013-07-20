@@ -1,5 +1,5 @@
 class MainController < ApplicationController
-  before_filter :protect_admin
+  load_and_authorize_resource
   def index
     @active_cohorts = Cohort.active
   end

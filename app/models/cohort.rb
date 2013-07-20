@@ -8,6 +8,15 @@ class Cohort < ActiveRecord::Base
   DBC_LENGTH = 9
 
   scope :active, where("end_date >= ?", Date.today)
+  scope :next, lambda{|location_id|
+    where("start_date > ?", Time.now - 1.week).
+    where("location_id = #{location_id}").
+    order("start_date")
+  }
+
+  def self.next_local(user)
+    Cohort.next(user.location_id).first
+  end
 
   def mentor_night
     start_date + 1.day
@@ -27,9 +36,6 @@ class Cohort < ActiveRecord::Base
     self.end_date = self.start_date + 9.weeks
   end
 
-  def self.next
-    Cohort.where("start_date > ?", Time.now.to_date - 1.week).limit(1).first
-  end
 
   def pairings
     Pairing.for_cohort(self.id)

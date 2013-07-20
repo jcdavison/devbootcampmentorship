@@ -1,7 +1,8 @@
 class CohortsController < ApplicationController
+  load_and_authorize_resource
   respond_to :html, :json
-  before_filter :protect_admin
   before_filter :find_cohort, only: [:notify]
+
 
   def show
     @cohort = Cohort.find_by_id(params[:id])

@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def logged_in?
-    session[:current_user_id] != nil ? true : false  
+    session[:current_user_id] != nil ? true : false
   end
 
   def current_user
@@ -19,15 +19,13 @@ class ApplicationController < ActionController::Base
   end
 
   def is_admin?
-    current_user && current_user.admin? ? true : false
+    current_user.try(:admin?)
   end
 
-  def protect_admin
-    unless is_admin?
-      redirect_to root_path
-    end
+  def is_leader?
+    current_user.try(:leader?)
   end
 
-  helper_method :logged_in?, :current_user, :is_admin?, :protect_admin
+  helper_method :logged_in?, :current_user, :is_admin?
 
 end

@@ -1,5 +1,5 @@
 class MessagesController < ApplicationController
-  before_filter :protect_admin
+  load_and_authorize_resource
 
   def new
   end

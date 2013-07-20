@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      @user.assign_next_cohort
+      @user.assign_next_cohort(@user)
       AdminMailer.welcome(@user).deliver
       redirect_to thank_you_path(id: @user.id)
     else

@@ -1,5 +1,5 @@
 class CommitmentsController < ApplicationController
-  before_filter :protect_admin
+  load_and_authorize_resource
   def destroy
     Commitment.find_by_user_id(params[:id]).destroy
     redirect_to :back
