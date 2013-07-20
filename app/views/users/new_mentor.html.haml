@@ -10,7 +10,7 @@
         %legend
           %h3.subheader
             Please Tell Us About You
-        = render partial: 'layouts/userinfo', locals: { u: u }
+        = render partial: 'layouts/userinfo', locals: { u: u, locations: @locations }
         = render partial: 'layouts/mentor_info', locals: { u: u }
         .row
           .columns.large-4.large-centered

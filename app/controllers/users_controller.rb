@@ -1,12 +1,12 @@
 class UsersController < ApplicationController
   def new_mentor
     @user = User.new
-    @locations = [ "San Francisco", "Chicago"]
+    @locations = Location.all
   end
 
   def new_boot
     @user = User.new
-    @locations = [ "San Francisco", "Chicago"]
+    @locations = Location.all
   end
 
   def index
@@ -14,7 +14,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
-    @user.location = params[:location]
     if @user.save
       @user.assign_next_cohort
       AdminMailer.welcome(@user).deliver
@@ -26,6 +25,7 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find_by_id(params[:id])
+    @locations = Location.all
   end
 
   def update

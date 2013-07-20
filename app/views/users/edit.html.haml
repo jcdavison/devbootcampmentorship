@@ -5,7 +5,7 @@
         %legend
           %h3.subheader
             You, In a Nut Shell !
-        = render partial: 'layouts/userinfo', locals: { u: u }
+        = render partial: 'layouts/userinfo', locals: { u: u, locations: @locations }
   .row
     .large-3.columns.large-centered
       = u.submit "Update Your Info!", class: "success button expand margin-top"

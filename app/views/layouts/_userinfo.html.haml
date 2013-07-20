@@ -28,7 +28,7 @@
         %span.prefix
           Location
       .large-9.columns
-        = select_tag :location, options_for_select(["San Francisco", "Chicago"]) 
+        = collection_select(:user, :location_id, locations, :id, :name)
   .large-1.columns
 .row
   .large-4.columns
