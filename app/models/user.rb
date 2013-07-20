@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessible :first_name, :last_name, :email, :pic, :role, :contact_phone, :contact_email, :twitter, :linkedin, :interests, :passions, :location, :company, :repo, :employment_agreement, :admin, :cohort_id
+  attr_accessible :first_name, :last_name, :email, :pic, :role, :contact_phone, :contact_email, :twitter, :linkedin, :interests, :passions, :location_id, :company, :repo, :employment_agreement, :admin, :cohort_id
   validates_presence_of :email, :first_name
   validates_uniqueness_of :email
 
@@ -11,8 +11,8 @@ class User < ActiveRecord::Base
   has_many :mentees, :through => :reverse_pairings, :class_name => "User"
   has_many :commitments
   has_many :cohorts, :through => :commitments
+  belongs_to :location
 
-  default_scope where(location: "San Francisco", deleted: nil)
 
   MESSAGE_LIST = ["all_mentors", "all_current_boots", "all_alum_and_boots", "all_users"]
   COHORT_LIST = ["all_mentors", "all_mentees", "all_members"]
@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
   def self.all_mentors
     all.select {|user| user.avail_mentor? }
   end
-  
+
   def self.all_users
     all
   end
@@ -143,7 +143,7 @@ class User < ActiveRecord::Base
     opts[:company] = user["Field315"] unless user["Field315"].blank?
     opts[:linkedin] = user["Field527"] unless user["Field527"].blank?
     opts[:twitter] = user["Field636"] unless user["Field636"].blank?
-    opts[:location] = user["Field525"] unless user["Field525"].blank?
+    opts[:location_id] = Location.find_by_name(user["Field525"]) unless user["Field525"].blank?
     opts[:passions] = user["Field535"] unless user["Field535"].blank?
     opts[:interests] = user["Field208"] unless user["Field208"].blank?
     opts

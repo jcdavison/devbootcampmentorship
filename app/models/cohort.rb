@@ -1,8 +1,9 @@
 class Cohort < ActiveRecord::Base
-  attr_accessible :end_date, :name, :start_date, :display
+  attr_accessible :end_date, :name, :start_date, :display, :location_id
   has_many :users
   has_many :commitments
   has_many :mentors, :through => :commitments, :source => :user
+  belongs_to :location
   validates_presence_of :name, :start_date, :end_date
   DBC_LENGTH = 9
 
@@ -54,7 +55,7 @@ class Cohort < ActiveRecord::Base
   end
 
   def notify_pairs
-    pairings.each do |pairing| 
+    pairings.each do |pairing|
       AdminMailer.notify_pair(pairing.mentor, pairing.mentee, name).deliver
     end
   end

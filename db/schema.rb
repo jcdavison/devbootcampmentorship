@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130718135234) do
+ActiveRecord::Schema.define(:version => 20130720173115) do
 
   create_table "authorizations", :force => true do |t|
     t.string   "provider"
@@ -28,9 +28,10 @@ ActiveRecord::Schema.define(:version => 20130718135234) do
     t.string   "name"
     t.date     "start_date"
     t.date     "end_date"
-    t.datetime "created_at",                    :null => false
-    t.datetime "updated_at",                    :null => false
-    t.boolean  "display",    :default => false
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+    t.boolean  "display",     :default => false
+    t.integer  "location_id"
   end
 
   add_index "cohorts", ["end_date"], :name => "index_cohorts_on_end_date"
@@ -46,6 +47,12 @@ ActiveRecord::Schema.define(:version => 20130718135234) do
   add_index "commitments", ["cohort_id"], :name => "index_commitments_on_cohort_id"
   add_index "commitments", ["user_id", "cohort_id"], :name => "index_commitments_on_user_id_and_cohort_id"
   add_index "commitments", ["user_id"], :name => "index_commitments_on_user_id"
+
+  create_table "locations", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "pairings", :force => true do |t|
     t.integer  "mentor_id"
@@ -66,20 +73,20 @@ ActiveRecord::Schema.define(:version => 20130718135234) do
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
     t.string   "pic"
+    t.integer  "cohort_id"
     t.string   "contact_phone"
     t.boolean  "active"
     t.boolean  "deleted"
-    t.integer  "cohort_id"
     t.string   "twitter"
     t.string   "company"
     t.string   "linkedin"
-    t.string   "location"
     t.text     "passions"
     t.text     "interests"
     t.string   "title"
     t.string   "repo"
     t.boolean  "employment_agreement"
     t.boolean  "admin"
+    t.integer  "location_id"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email"
