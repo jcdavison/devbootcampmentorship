@@ -1,5 +1,5 @@
 class EmailQueue
-  @queue = :email_queue
+  @queue = :high
 
   def self.perform(message, user)
     mail = AdminMailer.send_message(message, user)

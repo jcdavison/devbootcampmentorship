@@ -69,8 +69,7 @@ class Cohort < ActiveRecord::Base
     return unless emails
     emails.each do |email|
       user = User.find_by_email(email)
-      mail = Resque.enqueue(EmailQueue, message, user)
-      mail.deliver if mail
+      Resque.enqueue(EmailQueue, message, user)
     end
   end
 
