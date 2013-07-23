@@ -1,3 +1,5 @@
+require "resque/server"
+
 BootBook::Application.routes.draw do
   match '/auth/:provider/callback', to: 'sessions#create'
   match '/sign_out', to: 'sessions#destroy'
@@ -8,5 +10,8 @@ BootBook::Application.routes.draw do
   match '/message_cohort', via: :post, to: 'cohorts#notify'
   match '/boot_sign_up', to: 'users#new_boot'
   resources :users, :cohorts, :pairings, :commitments, :messages
+
+  mount Resque::Server.new, :at => "/resque"
+
   root :to => "users#index"
 end
