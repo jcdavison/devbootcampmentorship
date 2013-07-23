@@ -9,6 +9,8 @@ gem "omniauth", "~> 1.1.1"
 gem 'omniauth-linkedin'
 gem 'pg'
 gem 'rails', '3.2.8'
+gem 'redis'
+gem 'resque'
 gem 'sendgrid'
 gem 'unicorn'
 gem 'wuparty', '~> 1.2.4', :git => "git://github.com/bcamarda/wuparty.git"

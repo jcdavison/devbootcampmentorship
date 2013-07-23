@@ -13,7 +13,6 @@ class User < ActiveRecord::Base
   has_many :cohorts, :through => :commitments
   belongs_to :location
 
-
   MESSAGE_LIST = ["all_mentors", "all_current_boots", "all_alum_and_boots", "all_users"]
   COHORT_LIST = ["all_mentors", "all_mentees", "all_members"]
 
@@ -27,18 +26,10 @@ class User < ActiveRecord::Base
     return unless emails
     emails.each do |email|
       user = User.find_by_email(email)
-      mail = AdminMailer.send_message(message, user)
-      mail.deliver if mail
+      Resque.enqueue(EmailQueue, message, user)
     end
   end
 
-  def admin?
-    if admin == true
-      true
-    else
-      false
-    end
-  end
   def self.recent
     where(created_at: (Time.now - 14.days)..Time.now)
   end
