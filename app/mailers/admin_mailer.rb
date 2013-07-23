@@ -4,10 +4,10 @@ class AdminMailer < ActionMailer::Base
   CC_LINE = "john@devbootcamp.com, brett@devbootcamp.com, sherif@devbootcamp.com, stephanie@devbootcamp.com"
   CC_LITE = "john@devbootcamp.com, brett@devbootcamp.com"
 
-  def send_message(message, user)
+  def send_message(message, user_id)
     @content = message[:content]
-    @user = user
-    mail(to: @user[:email], subject: message[:subject], cc: CC_LINE, reply_to: CC_LITE)
+    @user = User.find_by_id(user_id)
+    mail(to: @user.email, subject: message[:subject], cc: CC_LINE, reply_to: CC_LITE)
   end
 
   def welcome(user)
