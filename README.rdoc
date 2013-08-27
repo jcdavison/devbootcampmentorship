@@ -5,14 +5,18 @@ Pull Requests very, very welcome.
 TODOS:
 
 # Tests
+  % We need lots and lots
 # Better Admin Panel
+  % Easier to log in, easier to use - this needs to be dead-simple for non-technical admins (see "Jimmyproofing": http://www.codinghorror.com/blog/2012/07/new-programming-jargon.html)
 # Auto-emails on specific cadence
   % Email per week of cohort with recommended topics of conversation
   % Emails to both mentors and mentees every 3 weeks requesting feedback and check-ins
-# Rake tasks to identify mentors who have not been active in some time
+# Past Mentor Re-engagement
+  % Rake/background tasks to identify mentors who have not been active in some time
   % Auto-email mentors to reconnect
+# Recent Alumni Engagement
+  % Email recently graduated boots about mock-interviewing
   % Auto-email boots have graduated X days ago about signing up to mentor
-# Email recently graduated boots about mock-interviewing
 
 
 
