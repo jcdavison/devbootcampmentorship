@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'cancan'
+gem 'figaro'
 gem 'haml-rails'
 gem 'jbuilder'
 gem 'jquery-rails'

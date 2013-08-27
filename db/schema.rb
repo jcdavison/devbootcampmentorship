@@ -73,10 +73,10 @@ ActiveRecord::Schema.define(:version => 20130720173115) do
     t.datetime "created_at",           :null => false
     t.datetime "updated_at",           :null => false
     t.string   "pic"
-    t.integer  "cohort_id"
     t.string   "contact_phone"
     t.boolean  "active"
     t.boolean  "deleted"
+    t.integer  "cohort_id"
     t.string   "twitter"
     t.string   "company"
     t.string   "linkedin"

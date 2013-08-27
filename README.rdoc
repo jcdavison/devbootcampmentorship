@@ -1,17 +1,26 @@
-Welcome to Boot Book (name VERY changeable)
+Welcome to Dev Bootcamp Mentorship!
 
-to start a localserver:
-thor dev:server (optional_port_number without parens, else it defaults to 3000)
+Pull Requests very, very welcome.
 
-to push to heroku:
-thor deploy:prod
+TODOS:
+
+# Tests
+# Better Admin Panel
+# Auto-emails on specific cadence
+  % Email per week of cohort with recommended topics of conversation
+  % Emails to both mentors and mentees every 3 weeks requesting feedback and check-ins
+# Rake tasks to identify mentors who have not been active in some time
+  % Auto-email mentors to reconnect
+  % Auto-email boots have graduated X days ago about signing up to mentor
+# Email recently graduated boots about mock-interviewing
+
+
 
 FEATURE LIST
 
 ## profile editing after auth with linkedin
 ## tailor communications and user facing views to reflect boot or mentor
 ## set the system to handle chicago based users as well
-## potential bug related to deleting commitment to cohort, what if has mentees?  
-## write some serious tests!
+## potential bug related to deleting commitment to cohort, what if has mentees?
 ## setup twilio to send sms updates to people
 ## a status based event mgmt system
